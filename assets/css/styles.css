@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2b3c53;
+}
+
+#login-container {
+  position: relative;
+  display: block;
+  top: 150px;
+}
+
+#welcome-logo {
+  display: block;
+  position: relative;
+  left: -30px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.welcome-input {
+  display: block;
+  position: inherit;
+  top: 40px;
+  margin: 0 auto;
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  border-style: none;
+  outline-style: none;
+  font-family: 'Lato', sans-serif;
+  border-bottom: 1px solid rgb(35, 144, 195);
+  color: #2b3c53;
+}
+
+.form {
+  border-radius: 15px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  margin: 0 auto;
+  width: 315px;
+  height: 326px;
+}
+
+.form input::placeholder {
+  text-align: center;
+  font-weight: 200;
+  font-style: italic;
+  color: rgb(212, 208, 208);
+}
+
+.btn {
+  border-radius: 7px;
+  background-color: rgb(35, 144, 195);
+  position: relative;
+  top: 40px;
+  width: 121px;
+  height: 43px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 12px;
+  color: white;
+  font-size: 17px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(24, 122, 167);
+}
+
+.no-account {
+  display: block;
+  position: relative;
+  top: 50px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+}
+
+.no-account>a {
+  font-style: italic;
+}
+
+#reg-form {
+  height: 409px;
+}
+
+#reg-form input {
+  margin-bottom: 20px;
+}
+
+#reg-btn {
+  margin-top: 40px;
+}
+
+#login-form input {
+  margin-bottom: 50px;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+}
+
+#search-input {
+  position: absolute;
+  top: 20px;
+  left: 250px;
+  width: 300px;
+  margin-left: 120px;
+  padding-left: 40px;
+}
+
+#search-input::placeholder {
+  font-weight: 200;
+  font-style: italic;
+  color: rgb(212, 208, 208);
+  opacity: 1;
+  text-align: left;
+}
+
+.nav-logo {
+  display: inline-block;
+  margin-left: 60px;
+  max-height: 72px;
+}
+
+nav a {
+  display: inline-block;
+  position: absolute;
+  top: 25px;
+  right: 70px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+  font-style: italic;
+  color: #2b3c53;
+}
+
+.nav-avatar {
+  position: absolute;
+  top: 10px;
+  right: 150px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-image: url('../img/profile.jpg'); 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid rgb(43, 150, 218);
+}
+
+nav h1 {
+  position: absolute;
+  top: 25px;
+  right: 220px;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  color: #2b3c53;
+}
