@@ -1,0 +1,67 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "age": "35",
+    "gendar": "Male",
+    "email" : "john@abv.bg",
+    "phone": "0899123456",
+    "avatar": "john.png",
+    "moreInfo": "",
+    "friends": "",
+    "posts": "",
+    "coments": ""
+  },
+  {
+    "firstName": "Johana",
+    "lastName": "Doe",
+    "age": "29",
+    "gendar": "Fimale",
+    "email" : "johana@abv.bg",
+    "phone": "0899123455",
+    "avatar": "jhoana.png",
+    "moreInfo": "",
+    "friends": "",
+    "posts": "",
+    "coments": ""
+  },
+  {
+    "firstName": "Json",
+    "lastName": "Doe",
+    "age": "10",
+    "gendar": "Male",
+    "email" : "json@abv.bg",
+    "phone": "0899123477",
+    "avatar": "json.png",
+    "moreInfo": "",
+    "friends": "",
+    "posts": "",
+    "coments": ""
+  },
+  {
+    "firstName": "Daniel",
+    "lastName": "Doe",
+    "age": "17",
+    "gendar": "Male",
+    "email" : "daniel@abv.bg",
+    "phone": "0899123777",
+    "avatar": "daniel.png",
+    "moreInfo": "",
+    "friends": "",
+    "posts": "",
+    "coments": ""
+  },
+  {
+    "firstName": "Kristin",
+    "lastName": "Doe",
+    "age": "11",
+    "gendar": "Male",
+    "email" : "kristin@abv.bg",
+    "phone": "0899123777",
+    "avatar": "kristin.png",
+    "moreInfo": "",
+    "friends": "",
+    "posts": "",
+    "coments": ""
+  }
+]

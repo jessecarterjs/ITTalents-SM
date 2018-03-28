@@ -1,0 +1,4 @@
+function timelineController() {
+   logoutController()
+   searchController()
+};
