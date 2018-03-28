@@ -1,8 +1,9 @@
 
 function loginController() {
     // if (localStorage.getItem('isLogged') == null) {
-    //     location.replace("#login");
+        location.replace("#login");
     // } else {
+        $('#reg-container').hide();
 
     $('#login-btn').on('click', function (event) {
         event.originalEvent.preventDefault()
@@ -12,17 +13,20 @@ function loginController() {
         var html = timeline({});
         $('main').html(html);
         $('#login-container').hide();
+        $('#reg-container').hide();
 
     });
     $('#no-acc').on('click', function (event) {
         event.originalEvent.preventDefault();
         location.replace("#register");
-        var source =  $('#register').html();
-        var regForm = Handlebars.compile(source);
-        var html = regForm({});
-        $('#login-container .form').html(html);
-        $('#login-container .form').css('height', '520');
-        $('#login-container').css('top', '0');
+        $('#login-container').hide();
+        $('#reg-container').show();
+        // var source =  $('#register').html();
+        // var regForm = Handlebars.compile(source);
+        // var html = regForm({});
+        // $('#login-container .form').html(html);
+        // $('#login-container .form').css('height', '520');
+        // $('#login-container').css('top', '0');
     });
     // }
 }

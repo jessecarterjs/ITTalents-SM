@@ -39,7 +39,12 @@
   </div>
 
   <!-- TODO:  THIS IS WELCOME PAGE ****** -REGISTRATION form -->
-  <script id='register' type='text/x-handlebars-template'>
+
+  <!-- <script id='register' type='text/x-handlebars-template'>   --> 
+     <!-- * * * мисля че тук не ни е необходим handlebars.. при регистрация просто трябва да обиколим всички input-и в reg-form и да съберем данните и съответно да създадем нов обект/потребител -->
+     
+  <div id="reg-container">
+    <img id="welcome-logo" src="assets/img/logo/welcome-logo.png" alt="" />
     <div class="form" id="reg-form" >
       <input class='welcome-input' type="text" placeholder="First Name"/>
       <input class='welcome-input' type="text" placeholder="Second Name"/><br/>
@@ -48,7 +53,9 @@
       <input class='welcome-input' type="email" placeholder="Email"/>
       <div id='reg-btn' class="btn">REGISTER</div>
     </div>
-  </script>
+
+  </div>
+<!--   </script> -->
 
 
   <!-- TODO:  THIS IS MAIN PAGE -->
@@ -60,13 +67,21 @@
       <img src="assets/img/search.png" alt="" style="max-height: 30px; position: absolute; top: 20px; left: 370px; z-index: 6;">
       <input id="search-input" class="welcome-input" type="text" placeholder="Search">
       <div id="search-results"></div>
-      <h1>John Doe</h1>
-      <div class="nav-avatar"></div>
+      <h1>John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER FIRST and LAST NAME => handlebars template ? >>>>>>>>>>> -->
+      <div class="nav-avatar"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER IMAGE  => handlebars template ? >>>>>>>>>>> -->
       <a id='logout' href="#">Log out.</a>
     </nav>
   
   <!-- TODO: THIS IS USER PROFILE-->
+
+
   </script>
+
+
+
+
+
+
 
 
   <script id='search' type='text/x-handlebars-template'>

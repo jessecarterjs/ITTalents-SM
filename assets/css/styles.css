@@ -6,7 +6,17 @@ body {
   background-color: #2b3c53;
 }
 
+/*
+* ================================ This is welcome page view ================================
+*/
+
 #login-container {
+  position: relative;
+  display: block;
+  top: 50px;
+}
+
+#reg-container {
   position: relative;
   display: block;
   top: 50px;
@@ -102,6 +112,10 @@ body {
   margin-bottom: 50px;
 }
 
+/*
+* ================================ This main page view ================================
+*/
+
 nav {
   position: fixed;
   width: 100%;
@@ -150,7 +164,7 @@ nav a {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-image: url('../img/profile.jpg'); 
+  background-image: url('../img/profile.jpg'); /*// this property should be changed by logged user image*/
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -165,7 +179,8 @@ nav h1 {
   font-size: 18px;
   color: #2b3c53;
 }
-#search-results{
+
+#search-results { /*------------------------------------------ NEED STYLING ------------------------------------------*/
   background-color: white;
   font-family: 'Lato', sans-serif;
   position: absolute;
