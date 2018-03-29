@@ -12,6 +12,7 @@
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src='node_modules/handlebars/dist/handlebars.min.js'></script>
   <script src='testService.js'></script>
+  <script src="logRegServices/loginServices.js"></script>
   <script src='controllers/registerController.js'></script>
   <script src='controllers/loginController.js'></script>
   <script src='controllers/logoutController.js'></script>
@@ -42,7 +43,7 @@
 
   <!-- <script id='register' type='text/x-handlebars-template'>   --> 
      <!-- * * * мисля че тук не ни е необходим handlebars.. при регистрация просто трябва да обиколим всички input-и в reg-form и да съберем данните и съответно да създадем нов обект/потребител -->
-     
+
   <div id="reg-container">
     <img id="welcome-logo" src="assets/img/logo/welcome-logo.png" alt="" />
     <div class="form" id="reg-form" >
@@ -85,14 +86,14 @@
 
 
   <script id='search' type='text/x-handlebars-template'>
-    <div id = 'searchTable'>
-      <table>
-        <tbody>
+    <div >
+      <table >
+        <tbody id='searchTable'>
           {{#each users}}
           <tr>
-            <td>{{firstName}}</td>
-            <td>{{lastName}}</td>
-            <td><button>add</button> </td>
+            <td><button></button></td>
+            <td>{{firstName}} {{lastName}}</td>
+            <td><button>+</button> </td>
           </tr>
           {{/each}}
         </tbody>

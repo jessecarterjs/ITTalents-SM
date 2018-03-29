@@ -180,12 +180,44 @@ nav h1 {
   color: #2b3c53;
 }
 
-#search-results { /*------------------------------------------ NEED STYLING ------------------------------------------*/
+/*#search-results { ------------------------------------------ NEED STYLING ------------------------------------------
   background-color: white;
   font-family: 'Lato', sans-serif;
-  position: absolute;
-  left: 30%;
-  padding: 15px;
+  
   text-align: left;
-  display: none;
+  display: block;
+}*/
+
+#searchTable {
+  position: absolute;
+  top: 70px;
+  left: 370px;
+  width: 300px;
+  background-color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-family: 'Lato', sans-serif;
 }
+
+#searchTable tr td {
+  vertical-align: middle;
+  text-align: center;
+  height: 50px;
+  width: 300px;
+
+}
+
+#searchTable button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #33CC00;
+  font-family: Lato;
+  font-size: 25px;
+  font-weight: 900;
+  color: white;
+  outline-style: none;
+  border: none;
+  cursor: pointer;
+}
+
