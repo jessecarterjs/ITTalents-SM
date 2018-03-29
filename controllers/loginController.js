@@ -7,13 +7,36 @@ function loginController() {
 
     $('#login-btn').on('click', function (event) {
         event.originalEvent.preventDefault()
-        location.replace("#timeline");
-        var source = $('#timeline').html();
-        var timeline = Handlebars.compile(source);
-        var html = timeline({});
-        $('main').html(html);
-        $('#login-container').hide();
-        $('#reg-container').hide();
+
+        var username = $("#lUsername").val();
+        var password = $("#lPassword").val();
+
+        if(userStorage.loginUser(username,password)){
+            sessionStorage.setItem('isLogged', true);
+            location.replace("#timeline");
+
+            //location.replace("#register"); // tedy: сложила съм го за пример , за да видя дали пренасочва след логването 
+
+             var source = $('#timeline').html();
+            // var timeline = Handlebars.compile(source);
+            // var html = timeline({});
+
+            $('main').html(source);
+            $('#login-container').hide();
+            $('#reg-container').hide();
+            $("#lUsername").val("");
+            $("#lPassword").val("");
+
+        } else {
+            alert("Enter again! Wrong user")
+
+            $("#lUsername").val("");
+            $("#lPassword").val("");
+            location.replace("#login");
+            $('#login-container').show();
+            $('#reg-container').hide();
+        }
+
 
     });
     $('#no-acc').on('click', function (event) {
