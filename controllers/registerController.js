@@ -9,9 +9,11 @@ function registerController() {
         var password = $("#rPassword").val();
         var emailAddres = $("#rEmail").val();
 
+
         // if(firstName.trim() == ""){
         //     // $("#registerError").html("Empty name").css("color","red");
         // }
+
 
        if(userStorage.registerUser(firstName,secoundName,username,password,emailAddres)){
             $('main').html()
