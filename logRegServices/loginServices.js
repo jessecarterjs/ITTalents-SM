@@ -33,8 +33,8 @@ var userStorage = (function(){
     
     
     UserStorage.prototype.registerUser = function (firstName, secoundName,username,password,email) {
-        if((typeof firstName == "string") && (firstName.length > 2) && (/^[A-Z]/.test(firstName))){
-            if((typeof secoundName == "string") && (secoundName.length > 2) && (/^[A-Z]/.test(secoundName) == true)){
+        if((typeof firstName == "string") && (firstName.length > 2) ){
+            if((typeof secoundName == "string") && (secoundName.length > 2)){
                 if((typeof username == "string") && (username.length > 4)){
                     var findUser = this.users.find(function(user){ return user.username == username});
                         if(findUser != null) { 
@@ -45,7 +45,7 @@ var userStorage = (function(){
                         if((typeof email == "string") && (email.length > 4)){
                             var findEmail = this.users.find(function(user){ return user.email == email});
                             if(findEmail != null){
-                                alert("Тhere is such an email addres ");
+                                alert("Тhere is such an email address!");
                                 return;
                             }
                             var newUser = new User(firstName,secoundName,username,password,email);
@@ -65,7 +65,7 @@ var userStorage = (function(){
                     return;
                 }
             } else {
-                alert("Invalid secound name. Please enter, again!");
+                alert("Invalid second name. Please enter, again!");
                 return;
             }
         } else {
@@ -75,13 +75,14 @@ var userStorage = (function(){
     }
     
     UserStorage.prototype.loginUser = function (username , password) {
-        if(((typeof username == "string") && (username.length > 0)) && ((typeof password == "string") && (password.length > 0))){
+        if(((typeof username == "string") && (username.length > 0)) && ((password.length > 0))){
+
             var findUser = this.users.findIndex(function(user){
                 return user.username == username && user.password == password;
             })
-            console.log(findUser);
+            // console.log(findUser);
             if(findUser >= 0){
-                console.log("okkk") 
+            
                 localStorage.setItem("users", JSON.stringify(this.users));
                 return true;
             } else {

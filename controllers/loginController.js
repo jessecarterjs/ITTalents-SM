@@ -8,8 +8,8 @@ function loginController() {
     $('#login-btn').on('click', function (event) {
         event.originalEvent.preventDefault()
 
-        var username = $("#lUsername").val();
-        var password = $("#lPassword").val();
+        var username = document.getElementById("#lUsername").value;
+        var password = document.getElementById("#lPassword").value
 
         if(userStorage.loginUser(username,password)){
             sessionStorage.setItem('isLogged', true);

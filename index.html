@@ -29,8 +29,8 @@
   <div id="login-container">
     <img id="welcome-logo" src="assets/img/logo/welcome-logo.png" alt="" />
     <div class="form" id="login-form">
-      <input class='welcome-input' type="text" placeholder="Enter Username" />
-      <input class='welcome-input' type="password" placeholder="Enter Password" />
+      <input id="#lUsername" class='welcome-input' type="text" placeholder="Enter Username" />
+      <input id="#lPassword" class='welcome-input' type="password" placeholder="Enter Password" />
       <div id='login-btn' class="btn">LOGIN</div>
       <div class="no-account">
         <p>or</p>
@@ -47,11 +47,11 @@
   <div id="reg-container">
     <img id="welcome-logo" src="assets/img/logo/welcome-logo.png" alt="" />
     <div class="form" id="reg-form" >
-      <input class='welcome-input' type="text" placeholder="First Name"/>
-      <input class='welcome-input' type="text" placeholder="Second Name"/><br/>
-      <input class='welcome-input' type="text" placeholder="Username"/>
-      <input class='welcome-input' type="password" placeholder="Password"/>
-      <input class='welcome-input' type="email" placeholder="Email"/>
+      <input id="#rFirstName" class='welcome-input' type="text" placeholder="First Name"/>
+      <input id="#rSecondName" class='welcome-input' type="text" placeholder="Second Name"/><br/>
+      <input id="#Username" class='welcome-input' type="text" placeholder="Username"/>
+      <input id="#Password" class='welcome-input' type="password" placeholder="Password"/>
+      <input id="#Email" class='welcome-input' type="email" placeholder="Email"/>
       <div id='reg-btn' class="btn">REGISTER</div>
     </div>
 
@@ -73,9 +73,50 @@
       <a id='logout' href="#">Log out.</a>
     </nav>
   
-  <!-- TODO: THIS IS USER PROFILE-->
+
+    <!-- THIS IS USER MENU -->
+
+    <div class="user-menu">
+      <div class="user-menu-btns">
+        <ul class="left-btns">
+          <li><a id="timeline-btn" href="#">Timeline</a></li>
+          <li><a id="about-btn" href="#">About</a></li>
+          </ul>
+<div class="spacer" style="clear: both;"></div>
+          <ul class="right-btns">
+          <li><a id="friends-btn" href="">Friends</a></li>
+          <li><a id="photos-btn" href="">Photos</a></li>
+        </ul>
+<div class="spacer" style="clear: both;"></div>
+
+      <div class="profile-avatar"></div>  <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON IMAGE >>>>>>>>>>> -->
+      <h1 class="user-name">John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USERNAME >>>>>>>>>>> -->
+      </div>
+      
+    </div>
+
+    <!-- THIS IS USER MAIN CONTENT -->
+  <div id="main-content">
+
+    <div class="new-post">
+      <textarea id="new-post-input" name=""  cols="80" rows="2" placeholder="What is on your mind?" autofocus></textarea>
+
+      <div class="new-post-footer">
+        <img class="add-img" src="assets/img/add-image.png" alt="">
+        <input id="input-add-img" type="text" placeholder="Enter Image URL">
+        <div id='post-btn' class="btn">POST</div> 
+      </div>
+    </div>
 
 
+    </div>
+
+    
+
+    
+</div>
+
+<div class="test"></div>
   </script>
 
 

@@ -121,6 +121,8 @@ nav {
   width: 100%;
   height: 70px;
   background-color: white;
+  box-shadow: 0 0 20px #333333;
+  z-index: 999999;
 }
 
 #search-input {
@@ -219,5 +221,188 @@ nav h1 {
   outline-style: none;
   border: none;
   cursor: pointer;
+}
+
+/*---------------------------------------------------------------- NEW NEW NEW NEW NEW NEW NEW NEW NEW -----------------------------------------------------------------------------------------------*/
+.user-menu {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  top: 250px;
+  max-width: 70%;
+  height: 70px;
+  border-radius: 3px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px #333333;
+  z-index: 176;
+}
+
+.right-btns {
+  position: absolute;
+  right: 3%;
+}
+
+.left-btns {
+  position: absolute;
+  left: 3%;
+}
+
+.user-menu-btns {
+  width: 100%;
+  height: 0;
+  text-align: center;
+}
+
+.user-menu-btns li {
+  position: relative;
+  top: 25px;
+  display: inline-block;
+  z-index: 70;
+}
+
+.user-menu-btns ul>li>a {
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  color: #2b3c53;
+  padding: 15px;
+  margin: 10px 25px;
+}
+
+.user-menu-btns ul {
+  list-style: none;
+}
+
+.user-menu-btns a:hover {
+  color: rgb(43, 150, 218);
+}
+
+.profile-avatar {
+  position: relative;
+  top: -120px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-image: url('../img/profile.jpg');  /*// this property should be changed by user image*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 4px solid rgb(43, 150, 218);
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.user-name {
+  position: relative;
+  text-align: center;
+  top: -110px;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  color: #2b3c53;
+  z-index: 950;
+}
+
+.new-post {
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  display: block;
+  position: relative;
+  top: 270px;
+  width: 100%;
+  height: 126px;
+  box-shadow: 0 0 20px #333333;
+  z-index: 0;
+}
+
+#new-post-input {
+  resize: none;
+  display: block;
+  width: 100%;
+  position: absolute;
+  border-radius: 5px;
+  border: none;
+  padding: 15px 20px;
+  outline-style: none;
+  font-size: 1.2em;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  color: #2b3c53;
+  overflow: auto;
+  z-index: 10;
+}
+
+#new-post-input::placeholder {
+  font-weight: 200;
+  font-style: italic;
+  color: #CCCCCC;
+  opacity: 1;
+  text-align: left;
+}
+
+.new-post-footer {
+  background-color: rgb(235, 235, 235);
+  position: absolute;
+  top: 90px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+}
+
+#post-btn {
+  border-radius: 5px;
+  background-color: rgb(35, 144, 195);
+  position: absolute;
+  top: 5px;
+  right: 3%;
+  width: 80px;
+  height: 30px;
+  padding: 6px;
+  z-index: 11;
+}
+
+#post-btn:hover {
+  background-color: #336699;
+}
+
+#input-add-img {
+  display: none;    /*SWITCH ON/OFF WITH CLICK ON ".add-img" icon*/
+  position: relative;
+  top: 7px;
+  left: 3%;
+  margin: 0 50px;
+  width: 52%;
+  height: 25px;
+  outline-style: none;
+  font-size: 15px;
+  z-index: 11;
+}
+
+.add-img {
+  position: absolute;
+  top: 5px;
+  left: 3%;
+  max-width: 30px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.add-img:hover {
+  opacity: 0.9;
+}
+
+#main-content {
+  position: relative;
+  margin: 0 auto;
+  width: 35%;
+}
+
+
+.test {
+  width: 800px;
+  height: 1000px;
+  background-color: none;
+  position: relative;
+  top: 500px;
 }
 
