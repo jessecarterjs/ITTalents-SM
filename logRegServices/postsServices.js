@@ -16,7 +16,7 @@ var usersTimeline = (function () {
 
     Timeline.prototype.addPost = function(text, img, username){
         var post = new Post (text, img, username);
-        this.timelines.push(post);
+        this.timelines.unshift(post); // тук трябва да е unshift вместо push за да може най-новия пост да излиза най-отгоре 
         localStorage.setItem("timelines", JSON.stringify(this.timelines));
     }
     Timeline.prototype.getPosts = function(username) {

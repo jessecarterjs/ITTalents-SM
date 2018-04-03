@@ -1,7 +1,8 @@
 function timelineController() {
-   logoutController()
-   searchController()
-
+   logoutController();
+   searchController();
+    $('main').show(); // everytime when timelineController the main.display should be block
+    
    function showTimeline() {
         var username = JSON.parse(sessionStorage.getItem('loggedUser'));
         var posts = usersTimeline.getPosts(username);
@@ -24,10 +25,11 @@ function timelineController() {
         var img = $('#input-add-img').val();
         var username = JSON.parse(sessionStorage.getItem('loggedUser'));
         usersTimeline.addPost(post, img, username);
-
+        
+        $('#new-post-input').val(''); //clear input field after post
+        $('#input-add-img').val(''); //clear input field after post
+        $('#input-add-img').hide(); //hide img input after post
         showTimeline();
-
-        console.log('тук трябва да добавим нов див към #main-content с новия пост');
    });
    showTimeline();
 };
