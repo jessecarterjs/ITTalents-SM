@@ -36,6 +36,8 @@ var userStorage = (function(){
         if((typeof firstName == "string") && (firstName.length > 2) ){
             if((typeof secoundName == "string") && (secoundName.length > 2)){
                 if((typeof username == "string") && (username.length > 4)){
+                    /* при тази проверка аз не успях да се регистрирам с моето име, но никъде не изведе съобщение, че username трябва да е с повече от 4 символа
+                    същото е и при паролата */
                     var findUser = this.users.find(function(user){ return user.username == username});
                         if(findUser != null) { 
                             alert("Тhere is such a username. Please enter again!");

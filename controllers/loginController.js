@@ -1,9 +1,9 @@
 
 function loginController() {
     // if (localStorage.getItem('isLogged') == null) {
-        location.replace("#login");
+    location.replace("#login");
     // } else {
-        $('#reg-container').hide();
+    $('#reg-container').hide();
 
     $('#login-btn').on('click', function (event) {
         event.originalEvent.preventDefault()
