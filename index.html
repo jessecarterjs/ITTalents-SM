@@ -1,70 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ITTalents Social Network</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src='node_modules/handlebars/dist/handlebars.min.js'></script>
-    <script src='testService.js'></script>
-    <script src="logRegServices/loginServices.js"></script>
-    <script src='controllers/registerController.js'></script>
-    <script src='controllers/loginController.js'></script>
-    <script src='controllers/logoutController.js'></script>
-    <script src='controllers/searchController.js'></script>
-    <script src='controllers/timelineController.js'></script>
-    <script src='app.js'></script>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ITTalents Social Network</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src='node_modules/handlebars/dist/handlebars.min.js'></script>
+  <script src='testService.js'></script>
+  <script src="logRegServices/loginServices.js"></script>
+  <script src="logRegServices/postsServices.js"></script>
+  <script src='controllers/registerController.js'></script>
+  <script src='controllers/loginController.js'></script>
+  <script src='controllers/logoutController.js'></script>
+  <script src='controllers/searchController.js'></script>
+  <script src='controllers/timelineController.js'></script>
+  <script src='app.js'></script>
+</head>
+
+<body>
 
 
-    <main>
-    </main>
+  <main>
+  </main>
 
-
-
-
-    <!-- TODO:  THIS IS WELCOME PAGE ****** -LOGIN form  -->
-    <div id="login-container">
-      <img id="welcome-logo" src="assets/img/logo/welcome-logo.png" alt="" />
-      <div class="form" id="login-form">
-        <input id="#lUsername" class='welcome-input' type="text" placeholder="Enter Username" />
-        <input id="#lPassword" class='welcome-input' type="password" placeholder="Enter Password" />
-        <div id='login-btn' class="btn">LOGIN</div>
-        <div class="no-account">
-          <p>or</p>
-          <a id="no-acc" href="">I don't have an account.</a>
-        </div>
+  <!-- TODO:  THIS IS WELCOME PAGE ****** -LOGIN form  -->
+  <div id="login-container">
+    <img id="welcome-logo" src="assets/img/logo/welcome-logo.png" alt="" />
+    <div class="form" id="login-form">
+      <input id="#lUsername" class='welcome-input' type="text" placeholder="Enter Username" />
+      <input id="#lPassword" class='welcome-input' type="password" placeholder="Enter Password" />
+      <div id='login-btn' class="btn">LOGIN</div>
+      <div class="no-account">
+        <p>or</p>
+        <a id="no-acc" href="">I don't have an account.</a>
       </div>
     </div>
-    <!-- TODO:  THIS IS WELCOME PAGE ****** -REGISTER form  -->
-    <div id="reg-container">
-      <img id="welcome-logo" src="assets/img/logo/welcome-logo.png" alt="" />
-      <div class="form" id="reg-form" >
-        <input id="#rFirstName" class='welcome-input' type="text" placeholder="First Name"/>
-        <input id="#rSecondName" class='welcome-input' type="text" placeholder="Second Name"/><br/>
-        <input id="#Username" class='welcome-input' type="text" placeholder="Username"/>
-        <input id="#Password" class='welcome-input' type="password" placeholder="Password"/>
-        <input id="#Email" class='welcome-input' type="email" placeholder="Email"/>
-        <div id='reg-btn' class="btn">REGISTER</div>
-      </div>
+  </div>
+  <!-- TODO:  THIS IS WELCOME PAGE ****** -REGISTER form  -->
+  <div id="reg-container">
+    <img id="welcome-logo" src="assets/img/logo/welcome-logo.png" alt="" />
+    <div class="form" id="reg-form">
+      <input id="#rFirstName" class='welcome-input' type="text" placeholder="First Name" />
+      <input id="#rSecondName" class='welcome-input' type="text" placeholder="Second Name" />
+      <br/>
+      <input id="#Username" class='welcome-input' type="text" placeholder="Username" />
+      <input id="#Password" class='welcome-input' type="password" placeholder="Password" />
+      <input id="#Email" class='welcome-input' type="email" placeholder="Email" />
+      <div id='reg-btn' class="btn">REGISTER</div>
     </div>
+  </div>
 
 
-
-
-
-    <!-- TODO:  THIS IS MAIN PAGE -->
-    <script id='timeline' type='text/x-handlebars-template'>
-    
-
-
-
-
+  <!--* TODO:  THIS IS MAIN PAGE -->
+  <script id='timeline' type='text/x-handlebars-template'>
+  
     <!-- TODO: THIS IS THE NAV BAR -->
     <nav>
       <img src="assets/img/logo/navbar-logo.png" class="nav-logo" alt="logo">
@@ -75,11 +69,6 @@
       <div class="nav-avatar"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER IMAGE  => handlebars template ? >>>>>>>>>>> -->
       <a id='logout' href="#">Log out.</a>
     </nav>
-
-
-
-
-
     
     <!-- THIS IS USER MENU -->
     <div class="user-menu">
@@ -102,8 +91,6 @@
 
 
 
-
-
     <!-- THIS IS USER MAIN CONTENT -->
     <div id="main-content">
       <!-- Това тук е див с инпут поле за създаване на нов пост. След натискане на бутона
@@ -119,29 +106,27 @@
           <div id='post-btn' class="btn">POST</div>
         </div>
       </div>
-
-
-
-
+      <div id="allposts"></div>
 
 
       
-      <!-- <script id='post' type='text/x-handlebars-template'> -->
+      <script id='post' type='text/x-handlebars-template'>
 
       <!-- TODO: това е примерен пост >>>
       трябва да бъде преправен под формата на темплейт.. за целта трябва при публикуването
       на нов пост да създаваме нов обект (който представлява просто самия пост). В обекта
       можем да пазим цялта информация нужна за да можем тук с handlebars да запълним всички
       полета -->
+      {{#each posts}}
       <div class="post">
         <div class="post-header">
           <div class="user-post-img"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
           <h1>John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
         </div>
         <div class="post-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta ex minus animi quam quidem, in earum dolor quisquam omnis consequuntur veritatis recusandae, facere voluptates, ea atque veniam nihil, aliquid ducimus. Voluptas debitis, quos vero excepturi dolores exercitationem eius nihil facere, amet, doloribus minus sint, in deleniti voluptatum sapiente fugiat modi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta ex minus animi quam quidem, in earum dolor quisquam omnis consequuntur veritatis recusandae, facere voluptates, ea atque veniam nihil, aliquid ducimus. Voluptas debitis, quos vero excepturi dolores exercitationem eius nihil facere, amet, doloribus minus sint, in deleniti voluptatum sapiente fugiat modi.</p>
+          <p>{{text}}</p>
           <br>
-          <img src="https://udemy-images.udemy.com/course/750x422/792484_cc98_3.jpg" alt="">
+          <img src="{{img}}" alt="">
         </div>
         <div class="post-footer">
           <div class="user-reply-img"></div>
@@ -149,15 +134,12 @@
           <div id='reply-btn' class="btn">REPLY</div>
         </div>
       </div>
+      {{/each}}
       
-      <!-- </script> -->
+      </script>
 
 
-
-
-
-
-      <script id='aboutme' type='text/x-handlebars-template'>
+  <script id='aboutme' type='text/x-handlebars-template'>
       <!-- TODO: това е примерно aboutme >>>
       трябва да бъде преправен под формата на темплейт.. От обекта чиито профил е това
       взимаме всичката необходима информация нужна за да можем тук с handlebars да запълним всички полета -->
@@ -199,7 +181,7 @@
 
 
 
-      <script id="friends" type='text/x-handlebars-template'>
+  <script id="friends" type='text/x-handlebars-template'>
       <!-- TODO: това е friends секцията >>>
       сложил съм 2 карти(friend-card представлява профилната снимка и името на приятелчето)
       Това също както предишните неща трябва да се изрисува с handlebars като за всяко приятелче
@@ -217,21 +199,13 @@
         
       </div>
       </script>
+  </script>
 
 
 
 
 
-</script>
-
-
-
-
-
-
-
-
-      <script id='search' type='text/x-handlebars-template'>
+  <script id='search' type='text/x-handlebars-template'>
       <div >
         <table >
           <tbody id='searchTable'>
@@ -248,5 +222,6 @@
       </script>
 
 
-    </body>
-  </html>
+</body>
+
+</html>

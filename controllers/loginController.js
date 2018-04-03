@@ -11,8 +11,9 @@ function loginController() {
         var username = document.getElementById("#lUsername").value;
         var password = document.getElementById("#lPassword").value
 
-        if(userStorage.loginUser(username,password)){
+        if(userStorage.loginUser(username, password)){
             sessionStorage.setItem('isLogged', true);
+            sessionStorage.setItem('loggedUser', JSON.stringify(username));
             location.replace("#timeline");
 
             //location.replace("#register"); // tedy: сложила съм го за пример , за да видя дали пренасочва след логването 

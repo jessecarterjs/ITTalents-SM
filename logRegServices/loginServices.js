@@ -18,6 +18,7 @@ var userStorage = (function(){
         this.username = username;
         this.password = password;
         this.email = email;
+        // this.post = []
       
     }
     
