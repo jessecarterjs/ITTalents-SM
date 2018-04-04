@@ -111,9 +111,8 @@
 
       
       <script id='post' type='text/x-handlebars-template'>
-
       {{#each posts}}
-      <div class="post">
+      <div class="post" id="{{id}}">
         <div class="post-header">
           <div class="user-post-img"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
           <h1>John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
@@ -123,6 +122,11 @@
           <br>
           <img src="{{img}}" alt="">
         </div>
+        <div class="post-footer">
+        {{#replies}}
+    <div>{{username}} {{text}}</div>
+        {{/replies}}
+      </div>
         <div class="post-footer">
           <div class="user-reply-img"></div>
           <input class="input-reply" type="text" placeholder="Add Comment">
