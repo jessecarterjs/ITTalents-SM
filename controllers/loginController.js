@@ -1,18 +1,19 @@
 
 function loginController() {
     // if (localStorage.getItem('isLogged') == null) {
-        location.replace("#login");
+    location.replace("#login");
     // } else {
-        $('#reg-container').hide();
+    $('#reg-container').hide();
 
     $('#login-btn').on('click', function (event) {
         event.originalEvent.preventDefault()
 
-        var username = $("#lUsername").val();
-        var password = $("#lPassword").val();
+        var username = document.getElementById("#lUsername").value;
+        var password = document.getElementById("#lPassword").value
 
-        if(userStorage.loginUser(username,password)){
+        if(userStorage.loginUser(username, password)){
             sessionStorage.setItem('isLogged', true);
+            sessionStorage.setItem('loggedUser', JSON.stringify(username));
             location.replace("#timeline");
 
             //location.replace("#register"); // tedy: сложила съм го за пример , за да видя дали пренасочва след логването 

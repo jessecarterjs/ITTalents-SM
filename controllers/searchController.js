@@ -6,7 +6,7 @@ function searchController() {
 
         });
     $('#search-input').on('keyup', function () {
-        console.log('refresh', users);
+        // console.log('refresh', users);
         var source = $('#search').html();
         var searchTable = Handlebars.compile(source)
         var search = $(this).val().toLowerCase();

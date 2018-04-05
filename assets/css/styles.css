@@ -9,7 +9,6 @@ body {
 /*
 * ================================ This is welcome page view ================================
 */
-
 #login-container {
   position: relative;
   display: block;
@@ -80,7 +79,6 @@ body {
 
 .btn:hover {
   background-color: rgb(24, 122, 167);
-  
 }
 
 .no-account {
@@ -115,12 +113,13 @@ body {
 /*
 * ================================ This main page view ================================
 */
-
 nav {
   position: fixed;
   width: 100%;
   height: 70px;
   background-color: white;
+  box-shadow: 0 0 20px #333333;
+  z-index: 999999;
 }
 
 #search-input {
@@ -180,12 +179,419 @@ nav h1 {
   color: #2b3c53;
 }
 
-#search-results { /*------------------------------------------ NEED STYLING ------------------------------------------*/
+/*#search-results { ------------------------------------------ NEED STYLING ------------------------------------------
   background-color: white;
   font-family: 'Lato', sans-serif;
-  position: absolute;
-  left: 30%;
-  padding: 15px;
+  
   text-align: left;
-  display: none;
+  display: block;
+}*/
+#searchTable {
+  position: absolute;
+  top: 70px;
+  left: 370px;
+  width: 300px;
+  background-color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-family: 'Lato', sans-serif;
 }
+
+#searchTable tr td {
+  vertical-align: middle;
+  text-align: center;
+  height: 50px;
+  width: 300px;
+}
+
+#searchTable button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #33CC00;
+  font-family: Lato;
+  font-size: 25px;
+  font-weight: 900;
+  color: white;
+  outline-style: none;
+  border: none;
+  cursor: pointer;
+}
+
+.user-menu {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  top: 250px;
+  max-width: 70%;
+  height: 70px;
+  border-radius: 3px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px #333333;
+  z-index: 176;
+}
+
+.right-btns {
+  position: absolute;
+  right: 3%;
+}
+
+.left-btns {
+  position: absolute;
+  left: 3%;
+}
+
+.user-menu-btns {
+  width: 100%;
+  height: 0;
+  text-align: center;
+}
+
+.user-menu-btns li {
+  position: relative;
+  top: 25px;
+  display: inline-block;
+  z-index: 70;
+}
+
+.user-menu-btns ul>li>a {
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  color: #2b3c53;
+  padding: 15px;
+  margin: 10px 25px;
+}
+
+.user-menu-btns ul {
+  list-style: none;
+}
+
+.user-menu-btns a:hover {
+  color: rgb(43, 150, 218);
+}
+
+.profile-avatar {
+  position: relative;
+  top: -120px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-image: url('../img/profile.jpg');  /*// this property should be changed by user image*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 4px solid rgb(43, 150, 218);
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.user-name {
+  position: relative;
+  text-align: center;
+  top: -110px;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  color: #2b3c53;
+  z-index: 950;
+}
+
+.new-post {
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 126px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 20px #333333;
+  z-index: 0;
+}
+
+#new-post-input {
+  resize: none;
+  display: block;
+  width: 100%;
+  position: absolute;
+  border-radius: 5px;
+  border: none;
+  padding: 15px 20px;
+  outline-style: none;
+  font-size: 1.2em;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  color: #2b3c53;
+  overflow: auto;
+  z-index: 10;
+}
+
+#new-post-input::placeholder {
+  font-weight: 200;
+  font-style: italic;
+  color: #CCCCCC;
+  opacity: 1;
+  text-align: left;
+}
+
+.new-post-footer {
+  background-color: rgb(235, 235, 235);
+  position: absolute;
+  top: 90px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+}
+
+#post-btn {
+  border-radius: 5px;
+  background-color: rgb(35, 144, 195);
+  position: absolute;
+  top: 5px;
+  right: 3%;
+  width: 80px;
+  height: 30px;
+  padding: 6px;
+  z-index: 11;
+}
+
+#post-btn:hover {
+  background-color: #336699;
+}
+
+#input-add-img {
+  display: none;    /*SWITCH ON/OFF WITH CLICK ON ".add-img" icon*/
+  position: relative;
+  top: 7px;
+  left: 3%;
+  margin: 0 50px;
+  width: 52%;
+  height: 25px;
+  outline-style: none;
+  font-size: 15px;
+  z-index: 11;
+}
+
+.add-img {
+  position: absolute;
+  top: 5px;
+  left: 3%;
+  max-width: 30px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.add-img:hover {
+  opacity: 0.9;
+}
+
+#main-content {
+  position: relative;
+  top: 270px;
+  margin: 0 auto;
+  width: 35%;
+}
+
+/*---------------------------------------------------------------- NEW NEW NEW NEW NEW NEW NEW NEW NEW ---------------------------------------------------------------------------------------*/
+
+
+
+
+/********** timeline posts section ***********/
+
+.post {
+  display: block;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  width: 100%;
+  min-height: 100px;
+  overflow: auto;
+  margin-bottom: 30px;
+}
+
+.post-header {
+  display: block;
+  top: 20px;
+  left: 20px;
+  padding-top: 10px;
+  height: 70px;
+  line-height: 70px;
+}
+
+.post h1 {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  color: #2b3c53;
+  vertical-align: middle;
+}
+
+.user-post-img {     /*това е профилната снимка на човека, който е направил поста*/
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-left: 5%;
+  margin-right: 5px;
+  border-radius: 50%;
+  vertical-align: middle;
+  background-image: url('../img/profile.jpg'); /*// this property should be changed by user image*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid rgb(43, 150, 218);
+  z-index: 1000;
+}
+
+.post-content {
+  display: table;
+  position: relative;
+  margin: 20px auto;
+  width: 90%;
+}
+
+.post-content img {  /*това е картинката, която потребителя е добавил към поста си*/
+  max-width: 100%;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+}
+
+.user-reply-img {  /*това е профилната снимка на човека който ще коментира съответния пост (т.е. на този който е логнат в момента)*/
+  position: relative;
+  display: inline-block;
+  top: 5px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-image: url('../img/profile.jpg'); /*// this property should be changed by logged user image*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid rgb(43, 150, 218);
+  z-index: 15;
+}
+
+.post-footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(235, 235, 235);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 100%;
+  height: 40px;
+}
+
+#reply-btn {
+  border-radius: 5px;
+  background-color: rgb(35, 144, 195);
+  position: absolute;
+  top: 5px;
+  right: 3%;
+  width: 80px;
+  height: 30px;
+  padding: 6px;
+  z-index: 11;
+}
+
+#reply-btn:hover {
+  background-color: #336699;
+}
+
+.input-reply {
+  position: relative;
+  display: inline-block;
+  top: -6px;
+  left: 3%;
+  margin: 0 30px;
+  width: 52%;
+  height: 25px;
+  outline-style: none;
+  font-size: 15px;
+  z-index: 11;
+}
+
+
+/********** about section ***********/
+
+.about {
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  top: 250px;
+  margin: 0 auto;
+  width: 60%;
+  height: 300px;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  color: #2b3c53;
+  z-index: 224;
+}
+
+.about table,tr,td {
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+.about table {
+    display: inline-block;
+    position: relative;
+    top: 25px;
+    left: 30px;
+    width: 350px;
+}
+
+.more-info {
+  text-align: center;
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    top:20px;
+    left: 45px; 
+    width: 250px;
+    height: 250px;
+    font-size: 16px;
+}
+
+
+/********** friends section ***********/
+
+.all-friends {
+  display: block;
+  position: relative;
+  top: 280px;
+  width: 65%;
+  margin: 0 auto;
+  text-align:center;
+}
+
+.friend-card {
+  float: left;
+  background-color: white;
+  border-radius: 5px;
+  width: 190px;
+  height: 210px;
+  margin: 10px;
+  padding: 15px;
+}
+
+.friend-card img {
+  max-width: 150px;
+
+}
+
+.friend-card h1 {
+  position: relative;
+  display: block;
+  top: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  color: #2b3c53;
+}
+
+
+
+
