@@ -9,6 +9,7 @@ function registerController() {
         var password = $("#rPassword").val();
         var emailAddres = $("#rEmail").val();
 
+
        if(userStorage.registerUser(firstName,secoundName,username,password,emailAddres)){
             $('main').html()
             location.replace("#login");
