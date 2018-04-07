@@ -58,14 +58,15 @@
 
   <!--* TODO:  THIS IS MAIN PAGE -->
   <script id='timeline' type='text/x-handlebars-template'>
-  
+   
     <!-- TODO: THIS IS THE NAV BAR -->
     <nav>
       <img src="assets/img/logo/navbar-logo.png" class="nav-logo" alt="logo">
       <img src="assets/img/search.png" alt="" style="max-height: 30px; position: absolute; top: 20px; left: 370px; z-index: 6;">
       <input id="search-input" class="welcome-input" type="text" placeholder="Search">
       <div id="search-results"></div>
-      <h1>John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER FIRST and LAST NAME => handlebars template ? >>>>>>>>>>> -->
+      
+      <h1 id = 'name'>John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER FIRST and LAST NAME => handlebars template ? >>>>>>>>>>> -->
       <div class="nav-avatar"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER IMAGE  => handlebars template ? >>>>>>>>>>> -->
       <a id='logout' href="#">Log out.</a>
     </nav>
@@ -84,11 +85,11 @@
         </ul>
         <div class="spacer" style="clear: both;"></div>
         <div class="profile-avatar"></div>  <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON IMAGE >>>>>>>>>>> -->
-        <h1 class="user-name">John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USERNAME >>>>>>>>>>> -->
+        <h1 id = 'name2' class="user-name">John Doe</h1> 
+        <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USERNAME >>>>>>>>>>> -->
       </div>
       
     </div>
-
 
 
     <!-- THIS IS USER MAIN CONTENT -->
@@ -106,16 +107,18 @@
           <div id='post-btn' class="btn">POST</div>
         </div>
       </div>
+      
       <div id="allposts"></div>
 
 
-      
       <script id='post' type='text/x-handlebars-template'>
       {{#each posts}}
       <div class="post" id="{{id}}">
         <div class="post-header">
           <div class="user-post-img"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
-          <h1>John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
+          <!-- {{#logetUser}} -->
+          <h1>John Doe</h1> <!--* <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
+        <!-- {{/logetUser}} -->
         </div>
         <div class="post-content">
           <p>{{text}}</p>
@@ -219,7 +222,13 @@
         </table>
       </div>
       </script>
+      <script id='nameTemplate' type='text/x-handlebars-template'>
+        {{firstName}} {{lastName}}
+      </script>
 
+      <script id='name2Template' type='text/x-handlebars-template'>
+        {{firstName}} {{lastName}}
+      </script>
 
 </body>
 

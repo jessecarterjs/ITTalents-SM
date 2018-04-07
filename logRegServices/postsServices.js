@@ -8,7 +8,6 @@ var usersTimeline = (function () {
         this.img = img;
         this.username = username;
         this.replies = [];
-        
     }
 
     function Reply(text, username) {
