@@ -19,6 +19,7 @@
   <script src='controllers/logoutController.js'></script>
   <script src='controllers/searchController.js'></script>
   <script src='controllers/timelineController.js'></script>
+  <script src='controllers/aboutMeController.js'></script>
   <script src='app.js'></script>
 </head>
 
@@ -65,9 +66,10 @@
       <img src="assets/img/search.png" alt="" style="max-height: 30px; position: absolute; top: 20px; left: 370px; z-index: 6;">
       <input id="search-input" class="welcome-input" type="text" placeholder="Search">
       <div id="search-results"></div>
-      
       <h1 id = 'name'>John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER FIRST and LAST NAME => handlebars template ? >>>>>>>>>>> -->
+      
       <div class="nav-avatar"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER IMAGE  => handlebars template ? >>>>>>>>>>> -->
+     
       <a id='logout' href="#">Log out.</a>
     </nav>
     
@@ -75,8 +77,8 @@
     <div class="user-menu">
       <div class="user-menu-btns">
         <ul class="left-btns">
-          <li><a id="timeline-btn" href="#">Timeline</a></li>
-          <li><a id="about-btn" href="#">About</a></li>
+          <li><a id="timeline-btn" href="#timeline">Timeline</a></li>
+          <li><a id="about-btn" href="#aboutMe">About</a></li>
         </ul>
         <div class="spacer" style="clear: both;"></div>
         <ul class="right-btns">
@@ -84,9 +86,9 @@
           <li><a id="photos-btn" href="">Photos</a></li>
         </ul>
         <div class="spacer" style="clear: both;"></div>
+
         <div class="profile-avatar"></div>  <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON IMAGE >>>>>>>>>>> -->
-        <h1 id = 'name2' class="user-name">John Doe</h1> 
-        <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USERNAME >>>>>>>>>>> -->
+        <h1 id = 'name2' class="user-name">John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USERNAME >>>>>>>>>>> -->
       </div>
       
     </div>
@@ -110,15 +112,13 @@
       
       <div id="allposts"></div>
 
-
+</div>
       <script id='post' type='text/x-handlebars-template'>
       {{#each posts}}
       <div class="post" id="{{id}}">
         <div class="post-header">
           <div class="user-post-img"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
-          <!-- {{#logetUser}} -->
-          <h1>John Doe</h1> <!--* <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
-        <!-- {{/logetUser}} -->
+          <h1>{{username}}</h1> <!--* <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
         </div>
         <div class="post-content">
           <p>{{text}}</p>
@@ -133,49 +133,55 @@
         <div class="post-footer">
           <div class="user-reply-img"></div>
           <input class="input-reply" type="text" placeholder="Add Comment">
-          <div id='reply-btn' class="btn">REPLY</div>
+          <div id='reply-btn' class="btn reply-btn">REPLY</div>
         </div>
       </div>
       {{/each}}
-      
-      </script>
+</script>
 
 
-  <script id='aboutme' type='text/x-handlebars-template'>
+  <script id='aboutMe' type='text/x-handlebars-template'>
       <!-- TODO: това е примерно aboutme >>>
       трябва да бъде преправен под формата на темплейт.. От обекта чиито профил е това
       взимаме всичката необходима информация нужна за да можем тук с handlebars да запълним всички полета -->
+      
       <div class="about">
         <table>
           <tr>
             <td><i>First Name:</i></td>
-            <td>John</td>
+            <td>{{logetUser.fName}}</td>
           </tr>
           <tr>
             <td><i>Second Name:</i></td>
-            <td>Doe</td>
+            <td>{{logetUser.sName}}</td>
           </tr>
           <tr>
             <td><i>Age:</i></td>
-            <td>32</td>
+            <td><input type="number" id="age"></td>
           </tr>
           <tr>
             <td><i>Gender:</i></td>
-            <td>Male</td>
+            <td><input type="text" id = 'gender' ></td>
           </tr>
           <tr>
             <td><i>Email:</i></td>
-            <td>johndoe@ittalents.bg</td>
+            <td>{{logetUser.email}}</td>
           </tr>
           <tr>
             <td><i>Phone:</i></td>
-            <td>0899 999 999</td>
+            <td><input type="text" id = 'phone'></td>
+          </tr>
+          <tr>
+              <td><i>Image:</i></td>
+              <td><input type="text" id = 'imgAvatar'></td>
           </tr>
         </table>
         <div class="more-info">
-          <i>More Info:</i><br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid earum dolorem sit eveniet, velit iusto, porro, repellat cupiditate nemo iure fugiat voluptates inventore perspiciatis ipsam quam? Cupiditate perferendis vero saepe minus hic tenetur, impedit fuga adipisci distinctio, minima aliquam mollitia possimus nobis ratione rerum consectetur! Facilis, libero, similique? Quaerat, culpa.</p>
-        </div>
+          <i>More Info:</i> 
+          <textarea type="text" id = 'moreInfo' />
+          <div id='save' class="btn">SAVE</div>
+         </div>
+         
       </div>
       </script>
 
@@ -222,13 +228,16 @@
         </table>
       </div>
       </script>
-      <script id='nameTemplate' type='text/x-handlebars-template'>
+  <script id='nameTemplate' type='text/x-handlebars-template'>
         {{firstName}} {{lastName}}
+      </script>
+  <script id='avatarTemplate' type='text/x-handlebars-template'>
+        {{img}} 
       </script>
 
-      <script id='name2Template' type='text/x-handlebars-template'>
+  <!-- <script id='name2Template' type='text/x-handlebars-template'>
         {{firstName}} {{lastName}}
-      </script>
+      </script> -->
 
 </body>
 

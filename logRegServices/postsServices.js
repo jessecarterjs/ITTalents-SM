@@ -1,6 +1,6 @@
 var usersTimeline = (function () {
 
-    var nextId = 1;
+    var nextId = Date.now() + Math.floor(Math.random() * Math.floor(1000));
 
     function Post(text, img, username) {
         this.id = nextId++;

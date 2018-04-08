@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     function router() {
         var page = location.hash.slice(1);
-
         switch (page) {
             case 'login':
                 loginController();
@@ -14,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 timelineController();// постове, изтриване на собствени постове, редактиране
                 break;
             case 'aboutMe':
-                aboutController();// профил, информация за юзера, редактиране
+                aboutMeController();// профил, информация за юзера, редактиране
                 break;
             case 'friends':
                 friendsController();// показване на всички приятели, изтриване на приятели

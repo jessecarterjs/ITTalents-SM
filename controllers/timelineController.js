@@ -3,9 +3,8 @@ function timelineController() {
     logoutController();
     searchController();
     $('main').show(); // everytime when timelineController the main.display should be block
-
+    $('.new-post').show();
     function showTimeline() {
-      
 
         var users = JSON.parse(localStorage.getItem("users"))
         var loged = JSON.parse(sessionStorage.getItem('loggedUser'));
@@ -16,11 +15,16 @@ function timelineController() {
         var timeline = Handlebars.compile(source);
         var html = timeline({ firstName: logetUser.fName, lastName: logetUser.sName });
         $('#name').html(html);
-
-        var source = $('#name2Template').html();
-        var timeline2 = Handlebars.compile(source);
-        var html = timeline2({ firstName: logetUser.fName, lastName: logetUser.sName });
         $('#name2').html(html);
+
+
+        var about = JSON.parse(localStorage.getItem('about'));
+        var source = $('#avatarTemplate').html();
+        var timeline = Handlebars.compile(source);
+        var html = timeline({ img: about.img });
+        $('.profile-avatar').css('background-image', 'url('+about.img+')');
+        $('.nav-avatar').css('background-image', 'url('+about.img+')');
+        console.log('img ', about.img)
 
 
         var username = JSON.parse(sessionStorage.getItem('loggedUser'));
@@ -30,9 +34,11 @@ function timelineController() {
         var html = timeline({ posts: posts });
         $('#allposts').html(html);
 
-        $('#reply-btn').on('click', function () {
-            var reply = $('.input-reply').val();
-            var id = $('.input-reply').parent().parent().attr('id')
+        $('.reply-btn').on('click', function () {
+            console.log('click')
+            var reply = $(this).parent().children('input').val();
+            var id = $(this).parent().parent().attr('id')
+            console.log('ID ', id, reply);
             var username = JSON.parse(sessionStorage.getItem('loggedUser'));
             usersTimeline.addReply(reply, username, id)
             showTimeline();
