@@ -40,7 +40,7 @@ var usersTimeline = (function () {
         var index = this.timelines.findIndex(function (post) {
             return post.id == id;
         })
-        this.timelines[index].replies.push(reply);
+        this.timelines[index].replies.unshift(reply);
         localStorage.setItem("timelines", JSON.stringify(this.timelines));
     }
 

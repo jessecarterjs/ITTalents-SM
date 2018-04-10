@@ -16,10 +16,11 @@
   <script src="logRegServices/postsServices.js"></script>
   <script src='controllers/registerController.js'></script>
   <script src='controllers/loginController.js'></script>
-  <script src='controllers/logoutController.js'></script>
+  
   <script src='controllers/searchController.js'></script>
   <script src='controllers/timelineController.js'></script>
   <script src='controllers/aboutMeController.js'></script>
+  <script src='controllers/logoutController.js'></script>
   <script src='app.js'></script>
 </head>
 
@@ -49,9 +50,9 @@
       <input id="#rFirstName" class='welcome-input' type="text" placeholder="First Name" />
       <input id="#rSecondName" class='welcome-input' type="text" placeholder="Second Name" />
       <br/>
-      <input id="#Username" class='welcome-input' type="text" placeholder="Username" />
-      <input id="#Password" class='welcome-input' type="password" placeholder="Password" />
-      <input id="#Email" class='welcome-input' type="email" placeholder="Email" />
+      <input id="#rUsername" class='welcome-input' type="text" placeholder="Username" />
+      <input id="#rPassword" class='welcome-input' type="password" placeholder="Password" />
+      <input id="#rEmail" class='welcome-input' type="email" placeholder="Email" />
       <div id='reg-btn' class="btn">REGISTER</div>
     </div>
   </div>
@@ -63,10 +64,10 @@
     <!-- TODO: THIS IS THE NAV BAR -->
     <nav>
       <img src="assets/img/logo/navbar-logo.png" class="nav-logo" alt="logo">
-      <img src="assets/img/search.png" alt="" style="max-height: 30px; position: absolute; top: 20px; left: 370px; z-index: 6;">
+      <img src="assets/img/search.png" alt="" style="max-height: 30px; position: absolute; top: 20px; left: 320px; z-index: 6;">
       <input id="search-input" class="welcome-input" type="text" placeholder="Search">
       <div id="search-results"></div>
-      <h1 id = 'name'>John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER FIRST and LAST NAME => handlebars template ? >>>>>>>>>>> -->
+      <h1 id = 'name'></h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER FIRST and LAST NAME => handlebars template ? >>>>>>>>>>> -->
       
       <div class="nav-avatar"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER IMAGE  => handlebars template ? >>>>>>>>>>> -->
      
@@ -88,7 +89,7 @@
         <div class="spacer" style="clear: both;"></div>
 
         <div class="profile-avatar"></div>  <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON IMAGE >>>>>>>>>>> -->
-        <h1 id = 'name2' class="user-name">John Doe</h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USERNAME >>>>>>>>>>> -->
+        <h1 id = 'name2' class="user-name"></h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USERNAME >>>>>>>>>>> -->
       </div>
       
     </div>
@@ -125,16 +126,19 @@
           <br>
           <img src="{{img}}" alt="">
         </div>
-        <div class="post-footer">
-        {{#replies}}
-    <div>{{username}} {{text}}</div>
-        {{/replies}}
-      </div>
+        
         <div class="post-footer">
           <div class="user-reply-img"></div>
           <input class="input-reply" type="text" placeholder="Add Comment">
+
           <div id='reply-btn' class="btn reply-btn">REPLY</div>
         </div>
+        <div class="post-replys-container">
+        {{#replies}}
+    <div class="post-reply"><h2>{{username}} :</h2><div class="post-reply-text"><p>{{text}}</p></div></div>
+
+        {{/replies}}
+      </div>
       </div>
       {{/each}}
 </script>
@@ -149,11 +153,11 @@
         <table>
           <tr>
             <td><i>First Name:</i></td>
-            <td>{{logetUser.fName}}</td>
+            <td>{{loggedUser.fName}}</td>
           </tr>
           <tr>
             <td><i>Second Name:</i></td>
-            <td>{{logetUser.sName}}</td>
+            <td>{{loggedUser.sName}}</td>
           </tr>
           <tr>
             <td><i>Age:</i></td>
@@ -165,7 +169,7 @@
           </tr>
           <tr>
             <td><i>Email:</i></td>
-            <td>{{logetUser.email}}</td>
+            <td>{{loggedUser.email}}</td>
           </tr>
           <tr>
             <td><i>Phone:</i></td>
@@ -177,9 +181,9 @@
           </tr>
         </table>
         <div class="more-info">
-          <i>More Info:</i> 
+          <i>More Info:</i> <br>
           <textarea type="text" id = 'moreInfo' />
-          <div id='save' class="btn">SAVE</div>
+          <div id='save-btn' class="btn">SAVE</div>
          </div>
          
       </div>
@@ -231,9 +235,7 @@
   <script id='nameTemplate' type='text/x-handlebars-template'>
         {{firstName}} {{lastName}}
       </script>
-  <script id='avatarTemplate' type='text/x-handlebars-template'>
-        {{img}} 
-      </script>
+
 
   <!-- <script id='name2Template' type='text/x-handlebars-template'>
         {{firstName}} {{lastName}}

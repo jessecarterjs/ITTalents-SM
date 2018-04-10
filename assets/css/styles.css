@@ -125,7 +125,7 @@ nav {
 #search-input {
   position: absolute;
   top: 20px;
-  left: 250px;
+  left: 200px;
   width: 300px;
   margin-left: 120px;
   padding-left: 40px;
@@ -189,7 +189,7 @@ nav h1 {
 #searchTable {
   position: absolute;
   top: 70px;
-  left: 370px;
+  left: 320px;
   width: 300px;
   background-color: white;
   border-bottom-left-radius: 5px;
@@ -514,6 +514,42 @@ nav h1 {
   z-index: 11;
 }
 
+.post-replys-container {
+  border: 1px solid rgb(235, 235, 235);
+  background-color: rgb(235, 235, 235);
+}
+
+.post-reply {
+  position: relative;
+  display: block;
+  max-width: 90%;
+    padding: 10px;
+  margin: 15px auto;
+  border-radius: 10px;
+  
+  background-color: white;
+}
+
+.post-reply>h2 {
+ padding: 5px 0 10px 10px;
+  
+}
+
+.post-reply-text {
+  position: relative;
+  display: block;
+  max-width: 90%;
+  margin: 0 auto;
+  word-wrap: break-word;
+}
+
+#save-btn{
+  top: 11px;
+  letter-spacing: 2px;
+  width: 100px;
+  height: 40px;
+}
+
 
 /********** about section ***********/
 
@@ -521,11 +557,12 @@ nav h1 {
   border-radius: 5px;
   background-color: rgb(255, 255, 255);
   position: relative;
-  margin: 0 auto;
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   color: #2b3c53;
   z-index: 224;
+  width: 800px;
+
 }
 
 .about table,tr,td {
@@ -541,6 +578,19 @@ nav h1 {
     width: 350px;
 }
 
+.about textarea {
+  display: block;
+  position: relative;
+  resize: none;
+  overflow: hidden;
+  padding: 10px;
+  font-size: 12px;
+     width: 335px;
+    height: 110px;
+    border-style: none;
+    border: 1px solid #CCCCCC;
+}
+
 .more-info {
   text-align: left;
     padding: 10px;
@@ -552,6 +602,7 @@ nav h1 {
     height: 250px;
     font-size: 16px;
 }
+
 
 
 /********** friends section ***********/
@@ -589,12 +640,3 @@ nav h1 {
   color: hsl(215, 32%, 25%);
 }
 
-
-
-textarea{
-  width: 335px;
-height: 110px;
-}
-#save{
-  top: 11px;
-}

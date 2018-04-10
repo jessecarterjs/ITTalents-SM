@@ -7,8 +7,8 @@ function loginController() {
         event.originalEvent.preventDefault()
         
         var username = document.getElementById("#lUsername").value;
-        var password = document.getElementById("#lPassword").value
-
+        var password = document.getElementById("#lPassword").value;
+   
         if (userStorage.loginUser(username, password)) {
             sessionStorage.setItem('isLogged', true);
             sessionStorage.setItem('loggedUser', JSON.stringify(username));

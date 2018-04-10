@@ -1,31 +1,66 @@
 function aboutMeController() {
- 
+
+        logoutController();
+        searchController();
+
     location.replace("#aboutMe");
     $('.new-post').hide();
+
     var users = JSON.parse(localStorage.getItem("users"))
-    var loged = JSON.parse(sessionStorage.getItem('loggedUser'));
-    var logetUser = users.find(function (user) {
-        return user.username == loged
+    var logged = JSON.parse(sessionStorage.getItem('loggedUser'));
+    var loggedUser = users.find(function (user) {
+        return user.username == logged
     })
+
+    $('#main-content').css('width', '800px')
 
     var source = $('#aboutMe').html();
     var timeline = Handlebars.compile(source);
-    var html = timeline({ logetUser: logetUser });
-    $('#allposts').html(html);
+    var html = timeline({loggedUser});
+    $('#main-content').html(html);
     
-    var about = JSON.parse(localStorage.getItem('about'));
-    $('#age').val(about.age);
-    $('#gender').val(about.gender);
-    $('#phone').val(about.phone);
-    $('#moreInfo').val(about.moreInfo);
-    $('#imgAvatar').val(about.img);
+    var about = JSON.parse(localStorage.getItem('users'));
+    $('#age').val(loggedUser.moreInfo.age);
+    $('#gender').val(loggedUser.moreInfo.gender);
+    $('#phone').val(loggedUser.moreInfo.phone);
+    $('#moreInfo').val(loggedUser.moreInfo.info);
+    $('#imgAvatar').val(loggedUser.moreInfo.img);
 
-    $('#save').on('click', function(){
+    $('#save-btn').on('click', function(){
         var age = $('#age').val()
         var gender = $('#gender').val()
         var phone = $('#phone').val()
-        var moreInfo = $('#moreInfo').val()
-        var img = $('#imgAvatar').val()
-        localStorage.setItem('about', JSON.stringify({age, gender, phone, moreInfo, img}));
+        var info = $('#moreInfo').val()
+        var img = $('#imgAvatar').val().trim()
+
+        if (age != '') {
+            loggedUser.moreInfo['age'] = age;
+        }
+        if (gender != '') {
+            loggedUser.moreInfo['gender'] = gender;
+        }
+        if (phone != '') {
+            loggedUser.moreInfo['phone'] = phone;
+        }
+        if (info != '') {
+            loggedUser.moreInfo['info'] = info;
+        }
+        if (img != '') {
+            loggedUser.moreInfo['img'] = img;
+        }
+        
+        localStorage.setItem('users', JSON.stringify(users))
+        
+        location.replace("#timeline");
+        var source = $('#timeline').html();
+            $('main').html(source);
+            $('.about').hide();
+
+         $('.new-post').show();
+
+        
+        
     })
+
+
 }

@@ -1,51 +1,63 @@
 function timelineController() {
 
-    logoutController();
-    searchController();
+
     $('main').show(); // everytime when timelineController the main.display should be block
     $('.new-post').show();
+    $('#about').hide();
+    $('#main-content').css('width', '665px')
+
+
+    var source = $('#timeline').html();
+    $('main').html(source);
+
+    logoutController();
+    searchController();
+
     function showTimeline() {
 
         var users = JSON.parse(localStorage.getItem("users"))
-        var loged = JSON.parse(sessionStorage.getItem('loggedUser'));
-        var logetUser = users.find(function (user) {
-            return user.username == loged
+        var logged = JSON.parse(sessionStorage.getItem('loggedUser'));
+        var loggedUser = users.find(function(user) {
+            return user.username == logged
         })
         var source = $('#nameTemplate').html();
         var timeline = Handlebars.compile(source);
-        var html = timeline({ firstName: logetUser.fName, lastName: logetUser.sName });
+        var html = timeline({
+            firstName: loggedUser.fName,
+            lastName: loggedUser.sName
+        });
+        var img = loggedUser.moreInfo.img
+
         $('#name').html(html);
         $('#name2').html(html);
 
-
-        var about = JSON.parse(localStorage.getItem('about'));
-        var source = $('#avatarTemplate').html();
-        var timeline = Handlebars.compile(source);
-        var html = timeline({ img: about.img });
-        $('.profile-avatar').css('background-image', 'url('+about.img+')');
-        $('.nav-avatar').css('background-image', 'url('+about.img+')');
-        console.log('img ', about.img)
-
+        if (img != null) {
+            $('.nav-avatar').css('background-image', 'url(' + img + ')');
+            $('.profile-avatar').css('background-image', 'url(' + img + ')');
+        }
 
         var username = JSON.parse(sessionStorage.getItem('loggedUser'));
         var posts = usersTimeline.getPosts(username);
         var source = $('#post').html();
         var timeline = Handlebars.compile(source);
-        var html = timeline({ posts: posts });
+        var html = timeline({
+            posts: posts
+        });
         $('#allposts').html(html);
 
-        $('.reply-btn').on('click', function () {
-            console.log('click')
+        $('.reply-btn').on('click', function() {
+            
             var reply = $(this).parent().children('input').val();
             var id = $(this).parent().parent().attr('id')
-            console.log('ID ', id, reply);
+
             var username = JSON.parse(sessionStorage.getItem('loggedUser'));
             usersTimeline.addReply(reply, username, id)
             showTimeline();
         })
     };
 
-    $('.add-img').on('click', function (event) {
+
+    $('.add-img').on('click', function(event) {
         if ($('#input-add-img').css('display') != 'inline-block') {
             $('#input-add-img').show()
         } else {
@@ -53,10 +65,17 @@ function timelineController() {
         }
     });
 
-    $('#post-btn').on('click', function (event) {
+    $('#post-btn').on('click', function(event) {
         var post = $('#new-post-input').val();
         var img = $('#input-add-img').val();
         var username = JSON.parse(sessionStorage.getItem('loggedUser'));
+
+
+        var users = JSON.parse(localStorage.getItem("users"))
+        var logged = JSON.parse(sessionStorage.getItem('loggedUser'));
+        var loggedUser = users.find(function(user) {
+            return user.username == logged
+        })
 
         usersTimeline.addPost(post, img, username);
 
