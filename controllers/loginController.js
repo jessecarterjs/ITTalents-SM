@@ -1,14 +1,13 @@
-
 function loginController() {
     location.replace("#login");
     $('#reg-container').hide();
 
-    $('#login-btn').on('click', function (event) {
+    $('#login-btn').on('click', function(event) {
         event.originalEvent.preventDefault()
-        
+
         var username = document.getElementById("#lUsername").value;
         var password = document.getElementById("#lPassword").value;
-   
+
         if (userStorage.loginUser(username, password)) {
             sessionStorage.setItem('isLogged', true);
             sessionStorage.setItem('loggedUser', JSON.stringify(username));
@@ -22,7 +21,7 @@ function loginController() {
             $('#reg-container').hide();
             $("#lUsername").val("");
             $("#lPassword").val("");
-            
+
         } else {
             alert("Enter again! Wrong user")
 
@@ -35,7 +34,7 @@ function loginController() {
 
 
     });
-    $('#no-acc').on('click', function (event) {
+    $('#no-acc').on('click', function(event) {
         event.originalEvent.preventDefault();
         location.replace("#register");
         $('#login-container').hide();
@@ -49,6 +48,3 @@ function loginController() {
     });
     // }
 }
-
-
-

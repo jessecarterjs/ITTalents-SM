@@ -34,7 +34,10 @@ var userStorage = (function() {
             this.users = [];
             this.users.push(new User("Ivan", "Ivanov", "vankata94", "ivan123", "ivan@abv.bg"));
             this.users.push(new User("Ivan", "Ivanov", "vankata21", "ivan123", "ivan3@abv.bg"));
-            this.users.push(new User("Christian", "Petrov", "chris", "chris", "chris@abv.bg"))
+            this.users.push(new User("Christian", "Petrov", "chris", "chris", "chris@abv.bg"));
+            this.users.push(new User("Chris", "Carter", "chrisss", "chrissss", "chris2@abv.bg"));
+            this.users.push(new User("Misho", "Ivanov", "misho81", "misho81ivanov", "misho@abv.bg"));
+            this.users.push(new User("Mitko", "Peshov", "mitko", "miteto99", "pesho@abv.bg"));
         }
     }
 
@@ -72,7 +75,7 @@ var userStorage = (function() {
                                 var strg = JSON.parse(localStorage.getItem('users'))
                                 strg.push(newUser)
                                 localStorage.setItem("users", JSON.stringify(strg));
-                                
+
                             }
 
                             return true;
@@ -114,7 +117,7 @@ var userStorage = (function() {
                 // alert("Try Again")
                 return false;
             }
-        } 
+        }
     }
     return new UserStorage();
 })();

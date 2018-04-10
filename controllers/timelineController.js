@@ -46,7 +46,7 @@ function timelineController() {
         $('#allposts').html(html);
 
         $('.reply-btn').on('click', function() {
-            
+
             var reply = $(this).parent().children('input').val();
             var id = $(this).parent().parent().attr('id')
 
