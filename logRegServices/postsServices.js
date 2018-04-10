@@ -2,17 +2,19 @@ var usersTimeline = (function () {
 
     var nextId = Date.now() + Math.floor(Math.random() * Math.floor(1000));
 
-    function Post(text, img, username) {
+    function Post(text, img, username, avatar) {
         this.id = nextId++;
         this.text = text;
         this.img = img;
         this.username = username;
+        this.avatar = avatar;
         this.replies = [];
     }
 
-    function Reply(text, username) {
+    function Reply(text, username, avatar) {
         this.text = text;
         this.username = username;
+        this.avatar = avatar;
     }
 
     function Timeline() {
@@ -23,8 +25,8 @@ var usersTimeline = (function () {
         }
     }
 
-    Timeline.prototype.addPost = function(text, img, username){
-        var post = new Post (text, img, username);
+    Timeline.prototype.addPost = function(text, img, username, avatar){
+        var post = new Post (text, img, username, avatar);
         this.timelines.unshift(post); // тук трябва да е unshift вместо push за да може най-новия пост да излиза най-отгоре 
         localStorage.setItem("timelines", JSON.stringify(this.timelines));
     };
@@ -35,8 +37,8 @@ var usersTimeline = (function () {
         })
     };
 
-    Timeline.prototype.addReply = function (text, username, id) {
-        var reply = new Reply(text, username)
+    Timeline.prototype.addReply = function (text, username, avatar, id) {
+        var reply = new Reply(text, username, avatar)
         var index = this.timelines.findIndex(function (post) {
             return post.id == id;
         })

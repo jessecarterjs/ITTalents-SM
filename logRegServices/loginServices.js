@@ -77,7 +77,6 @@ var userStorage = (function() {
                                 localStorage.setItem("users", JSON.stringify(strg));
 
                             }
-
                             return true;
                         } else {
                             alert("Invalid email. Please enter, again!")

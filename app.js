@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
             case 'notification':
                 notificationController();// потвърждение на поканата за приятелство 
                 break;
-            // case 'groups':
-            //     groupsController(); //създаване на групи
-            //     break;
+            case 'photos':
+                photosController(); //upload photos
+                break;
             case 'logout':
             console.log('logout');
                 logoutController(); //ще води към login page

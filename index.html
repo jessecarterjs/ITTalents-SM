@@ -70,7 +70,6 @@
       <h1 id = 'name'></h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER FIRST and LAST NAME => handlebars template ? >>>>>>>>>>> -->
       
       <div class="nav-avatar"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON LOGGED USER IMAGE  => handlebars template ? >>>>>>>>>>> -->
-     
       <a id='logout' href="#">Log out.</a>
     </nav>
     
@@ -87,7 +86,6 @@
           <li><a id="photos-btn" href="">Photos</a></li>
         </ul>
         <div class="spacer" style="clear: both;"></div>
-
         <div class="profile-avatar"></div>  <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON IMAGE >>>>>>>>>>> -->
         <h1 id = 'name2' class="user-name"></h1> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USERNAME >>>>>>>>>>> -->
       </div>
@@ -110,7 +108,6 @@
           <div id='post-btn' class="btn">POST</div>
         </div>
       </div>
-      
       <div id="allposts"></div>
 
 </div>
@@ -118,7 +115,7 @@
       {{#each posts}}
       <div class="post" id="{{id}}">
         <div class="post-header">
-          <div class="user-post-img"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
+          <div class="user-post-img" id="{{avatar}}"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
           <h1>{{username}}</h1> <!--* <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
         </div>
         <div class="post-content">
@@ -128,6 +125,8 @@
         </div>
         
         <div class="post-footer">
+      </div>
+        <div class="post-footer">
           <div class="user-reply-img"></div>
           <input class="input-reply" type="text" placeholder="Add Comment">
 
@@ -135,8 +134,10 @@
         </div>
         <div class="post-replys-container">
         {{#replies}}
-    <div class="post-reply"><h2>{{username}} :</h2><div class="post-reply-text"><p>{{text}}</p></div></div>
-
+          <div class="post-reply">
+              <div class="user-reply-img reply-avatar" id = 'reply-avatar'></div>
+              <div class="post-reply-text"><p>{{text}}</p></div>
+          </div>
         {{/replies}}
       </div>
       </div>
@@ -236,10 +237,6 @@
         {{firstName}} {{lastName}}
       </script>
 
-
-  <!-- <script id='name2Template' type='text/x-handlebars-template'>
-        {{firstName}} {{lastName}}
-      </script> -->
 
 </body>
 

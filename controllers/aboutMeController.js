@@ -11,6 +11,12 @@ function aboutMeController() {
     var loggedUser = users.find(function (user) {
         return user.username == logged
     })
+    if (!loggedUser) {
+        loggedUser = {};
+    }
+    if (!loggedUser.moreInfo) {
+        loggedUser.moreInfo = {};
+    }
 
     $('#main-content').css('width', '800px')
 
