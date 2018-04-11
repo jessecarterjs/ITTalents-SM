@@ -680,3 +680,38 @@ nav h1 {
   font-size: 18px;
   color: hsl(215, 32%, 25%);
 }
+
+
+#input-add-photo {
+   display: none;    /*SWITCH ON/OFF WITH CLICK ON ".add-img" icon */
+  position: relative;
+  top: 7px;
+  left: 3%;
+  margin: 0 50px;
+  width: 52%;
+  height: 25px;
+  outline-style: none;
+  font-size: 15px;
+  z-index: 11;
+}
+
+
+#uploadPhoto {
+  display: none;
+}
+ #add-btn{
+  border-radius: 5px;
+  background-color: rgb(35, 144, 195);
+  position: absolute;
+  top: 5px;
+  right: 3%;
+  width: 80px;
+  height: 30px;
+  padding: 6px;
+  z-index: 11;
+
+}
+
+#add-btn:hover {
+  background-color: #336699;
+}

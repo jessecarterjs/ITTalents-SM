@@ -14,19 +14,23 @@
   <script src='testService.js'></script>
   <script src="logRegServices/loginServices.js"></script>
   <script src="logRegServices/postsServices.js"></script>
+  <script src='logRegServices/photosService.js'></script>
+
   <script src='controllers/registerController.js'></script>
   <script src='controllers/loginController.js'></script>
-  
+
   <script src='controllers/searchController.js'></script>
   <script src='controllers/timelineController.js'></script>
   <script src='controllers/mainTimelineController.js'></script>
   <script src='controllers/aboutMeController.js'></script>
+  <script src='controllers/photosController.js'></script>
+
   <script src='controllers/logoutController.js'></script>
   <script src='app.js'></script>
 </head>
 
 <body>
-<main>
+  <main>
   </main>
 
   <!-- TODO:  THIS IS WELCOME PAGE ****** -LOGIN form  -->
@@ -57,7 +61,8 @@
     </div>
   </div>
 
-
+  
+  
   <!--* TODO:  THIS IS MAIN PAGE -->
   <script id='timeline' type='text/x-handlebars-template'>
    
@@ -82,8 +87,8 @@
         </ul>
         <div class="spacer" style="clear: both;"></div>
         <ul class="right-btns">
-          <li><a id="friends-btn" href="">Friends</a></li>
-          <li><a id="photos-btn" href="">Photos</a></li>
+          <li><a id="friends-btn" href="#friends">Friends</a></li>
+          <li><a id="photos-btn" href="#photos">Photos</a></li>
         </ul>
         <div class="spacer" style="clear: both;"></div>
         <div class="profile-avatar"></div>  <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON IMAGE >>>>>>>>>>> -->
@@ -100,6 +105,7 @@
       в последствие добавяме с темплейт като първи елемент след този див с новия пост
       Може новия пост да съдържа само текст (т.е. полето със снимката да е празно), в такъв
       случай при създаването на новия пост не добавяме <img> таг в template-a -->
+      
       <div class="new-post">
         <textarea id="new-post-input" name=""  cols="80" rows="2" placeholder="What is on your mind?" autofocus></textarea>
         <div class="new-post-footer">
@@ -111,10 +117,12 @@
       <div id="allposts"></div>
 
 </div>
+
+
+
       <script id='post' type='text/x-handlebars-template'>
       {{#each posts}}
       <div class="post" id="{{id}}">
-
         <div class="post-header">
           <div class="user-post-img" id="{{avatar}}"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
           <h1>{{username}}</h1> <!--* <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
@@ -154,7 +162,6 @@
       <!-- TODO: това е примерно aboutme >>>
       трябва да бъде преправен под формата на темплейт.. От обекта чиито профил е това
       взимаме всичката необходима информация нужна за да можем тук с handlebars да запълним всички полета -->
-      
       <div class="about">
         <table>
           <tr>
@@ -197,8 +204,6 @@
 
 
 
-
-
   <script id="friends" type='text/x-handlebars-template'>
       <!-- TODO: това е friends секцията >>>
       сложил съм 2 карти(friend-card представлява профилната снимка и името на приятелчето)
@@ -221,8 +226,6 @@
 
 
 
-
-
   <script id='search' type='text/x-handlebars-template'>
       <div >
         <table >
@@ -238,11 +241,48 @@
         </table>
       </div>
       </script>
+
   <script id='nameTemplate' type='text/x-handlebars-template'>
         {{firstName}} {{lastName}}
       </script>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat molestias cum, fugit veniam, inventore aliquam assumenda. Amet, placeat mollitia earum ipsa odio perspiciatis omnis sequi repellendus magni non, nemo, ab!</p>
+
+
+
+
+
+  <script id='photo' type='text/x-handlebars-template'>
+        {{#each photos}}
+        <div class="post" id="{{id}}">
+          <div class="post-header">
+                <div class="user-post-img" id="{{avatar}}"></div>
+                <h1>{{username}}</h1> 
+              <!-- <p>lorem</p> -->
+              <span class="del">&#10005;</span>
+          </div>
+          <div class="post-content">
+            <!-- {{#if url}} -->
+            <a href={{url}} target="_blank"><img src="{{url}}" alt=""></a>
+            <!-- {{/if}} -->
+          </div>
+        </div>
+        {{/each}}
+  </script>
+  <script id="photos" type="text/x-handlebars-template">
+    <div class="new-post" id="uploadPhoto">
+        <div class="new-post-footer">
+          <img class="add-img" src="assets/img/add-image.png" alt="">
+          <input id="input-add-photo" type="text" placeholder="Enter Image URL">
+          <div id='add-btn'class="btn" >ADD</div>
+        </div>
+    </div>
+    <div id ='allPhotos'></div>
+  </script>
+
+
+
+
 </body>
 
 </html>

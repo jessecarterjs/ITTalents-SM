@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 photosController(); //upload photos
                 break;
             case 'logout':
-            console.log('logout');
                 logoutController(); //ще води към login page
                 break;
 
