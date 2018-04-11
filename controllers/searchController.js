@@ -11,7 +11,6 @@ function searchController() {
             return search != '' && (user.fName.toLowerCase().indexOf(search) != -1);
         });
 
-        console.log(filteredUsers)
         var html = searchTable({
             users: filteredUsers
         })
@@ -21,6 +20,12 @@ function searchController() {
         } else {
             $('#search-results').hide();
         }
+        $(window).on('click', function(event){
+            event.originalEvent.preventDefault()
+        $('#search-input').val('')
+        $('#search-results').fadeOut();
+        $(window).off()
+    })
     });
-
+    
 };

@@ -22,7 +22,7 @@ var userStorage = (function() {
             gender: null,
             phone: null,
             info: null,
-            img: null
+            img: 'https://image.ibb.co/i922Kx/profile.png'
         };
 
     }

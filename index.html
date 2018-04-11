@@ -19,15 +19,14 @@
   
   <script src='controllers/searchController.js'></script>
   <script src='controllers/timelineController.js'></script>
+  <script src='controllers/mainTimelineController.js'></script>
   <script src='controllers/aboutMeController.js'></script>
   <script src='controllers/logoutController.js'></script>
   <script src='app.js'></script>
 </head>
 
 <body>
-
-
-  <main>
+<main>
   </main>
 
   <!-- TODO:  THIS IS WELCOME PAGE ****** -LOGIN form  -->
@@ -54,6 +53,7 @@
       <input id="#rPassword" class='welcome-input' type="password" placeholder="Password" />
       <input id="#rEmail" class='welcome-input' type="email" placeholder="Email" />
       <div id='reg-btn' class="btn">REGISTER</div>
+      <a id="back-to-login" href="">Back to login.</a>
     </div>
   </div>
 
@@ -114,14 +114,18 @@
       <script id='post' type='text/x-handlebars-template'>
       {{#each posts}}
       <div class="post" id="{{id}}">
+
         <div class="post-header">
           <div class="user-post-img" id="{{avatar}}"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
           <h1>{{username}}</h1> <!--* <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
+          <span class="del">&#10005;</span>
         </div>
         <div class="post-content">
           <p>{{text}}</p>
+          {{#if img}}
           <br>
           <img src="{{img}}" alt="">
+          {{/if}}
         </div>
         
         <div class="post-footer">
@@ -136,7 +140,8 @@
         {{#replies}}
           <div class="post-reply">
               <div class="user-reply-img reply-avatar" id = 'reply-avatar'></div>
-              <div class="post-reply-text"><p>{{text}}</p></div>
+              <h2>{{username}}</h2>
+              <div class="post-reply-text">{{text}}</div>
           </div>
         {{/replies}}
       </div>
@@ -224,7 +229,7 @@
           <tbody id='searchTable'>
             {{#each users}}
             <tr>
-              
+              <td><img src="{{moreInfo.img}}" alt=""></td>
               <td>{{fName}} {{sName}}</td>
               <td><button>+</button> </td>
             </tr>

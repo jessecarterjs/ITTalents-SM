@@ -1,4 +1,6 @@
 function loginController() {
+    $('#login-container').hide()
+    $('#login-container').fadeIn()
     location.replace("#login");
     $('#reg-container').hide();
 
@@ -17,7 +19,7 @@ function loginController() {
 
             var source = $('#timeline').html();
             $('main').html(source);
-            $('#login-container').hide();
+            $('#login-container').fadeOut();
             $('#reg-container').hide();
             $("#lUsername").val("");
             $("#lPassword").val("");
@@ -38,7 +40,7 @@ function loginController() {
         event.originalEvent.preventDefault();
         location.replace("#register");
         $('#login-container').hide();
-        $('#reg-container').show();
+        $('#reg-container').fadeIn();
         // var source =  $('#register').html();
         // var regForm = Handlebars.compile(source);
         // var html = regForm({});

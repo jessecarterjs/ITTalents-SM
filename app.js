@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
             case 'register':
                 registerController();
                 break;
+            case 'mainTimeline':
+                mainTimeline();
+                break;
             case 'timeline':
                 timelineController();// постове, изтриване на собствени постове, редактиране
                 break;
