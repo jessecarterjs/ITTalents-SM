@@ -5,7 +5,9 @@ function aboutMeController() {
 
     location.replace("#aboutMe");
     $('.new-post').hide();
-
+    $('#about').show();
+    $('#main-content').show()
+    $('#container-with-friends').hide()
     var users = JSON.parse(localStorage.getItem("users"))
     var logged = JSON.parse(sessionStorage.getItem('loggedUser'));
     var loggedUser = users.find(function (user) {

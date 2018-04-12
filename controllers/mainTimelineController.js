@@ -2,12 +2,31 @@ function mainTimeline() {
 	$('.user-menu').remove();
 	$('#main-content').remove();
 
-	$(function() {
+		$("#container-with-friends").hide()
 		$('.mainTimeline').remove()
 		$('main').append('<div class="mainTimeline"></div>')
+		usersTimeline.refreshPosts();
+
+
+		 var users = JSON.parse(localStorage.getItem("users"))
+        var logged = JSON.parse(sessionStorage.getItem('loggedUser'));
+        var loggedUser = users.find(function (user) {
+            return user.username == logged
+        })
+		var img = loggedUser.moreInfo.img
+
+
+
+		$('.user-reply-img2').css('background-image', 'url( ' + img + ')')
 		
+		Handlebars.registerHelper('isTrue', function(avatar) {
+            
+            
+            return avatar != undefined;
+        });
+
 		var posts = JSON.parse(localStorage.getItem('timelines'));
-		var source = $('#post').html();
+		var source = $('#post-mainTimeline').html();
 		var timeline = Handlebars.compile(source);
 		var html = timeline({
 			posts: posts
@@ -59,7 +78,7 @@ function mainTimeline() {
 			usersTimeline.refreshPosts();
 			mainTimeline()
 		})
-	})
+	
 
 
 

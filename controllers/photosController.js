@@ -28,12 +28,7 @@ function photosController() {
             showPhotos();
         });
     }
-    location.replace("#photos");
-    $('main').show(); // everytime when timelineController the main.display should be block
-    $('.new-post').hide();
-    $('#about').hide();
-    $('#allposts').hide();
-    $('#main-content').css('width', '665px')
+    
 
     // $('#main-content').html($('#uploadPhoto'));
 
@@ -55,7 +50,7 @@ function photosController() {
         var username = JSON.parse(sessionStorage.getItem('loggedUser'));
         var url = $('#input-add-photo').val();
 
-        if (url != '') {
+        if (url.trim() != '') {
             var logged = JSON.parse(sessionStorage.getItem('loggedUser'));
             var users = JSON.parse(localStorage.getItem("users"))
             var loggedUser = users.find(function (user) {
@@ -74,6 +69,8 @@ function photosController() {
 
             $('#input-add-photo').val('');
             $('#input-add-img').hide();
+        }else {
+            $('#input-add-photo').val('ADD SOME URL!!!!!');
         }
         showPhotos();
     });

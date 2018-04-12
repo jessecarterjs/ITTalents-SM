@@ -17,6 +17,8 @@ var userStorage = (function() {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.friendsList = []; // list of users object
+        this.requestedList = [];
         this.moreInfo = {
             age: null,
             gender: null,
@@ -116,6 +118,174 @@ var userStorage = (function() {
                 // alert("Try Again")
                 return false;
             }
+        }
+    }
+
+    UserStorage.prototype.getAllUsers = function() {
+        if (localStorage.getItem("users") == null) {
+            console.log('sdsdsdsds')
+            localStorage.setItem("users", JSON.stringify(this.users));
+        } else {
+            console.log('aaaaaa')
+            var users = JSON.parse(localStorage.getItem("users"));
+            this.users = users;
+            localStorage.setItem("users", JSON.stringify(this.users))
+        }
+
+
+        return this.users;
+    }
+    // на всеки потребител ще му излизат индивидуално лично негови потребители .. 
+    UserStorage.prototype.getAllUsersForUser = function(userMail) {
+        var users = this.users;
+        var currentUser = users.find(function(user) {
+            return user.email == userMail;
+        });
+
+        if (currentUser != undefined) {
+            var usersFrList = currentUser.friendsList;
+            var reList = currentUser.requestedList;
+            var allUsers = usersFrList.concat(reList);
+
+            var filterUsers = users.filter(function(user) {
+                return !allUsers.includes(user.email);
+            })
+
+            var fullFilterUsers = filterUsers.filter(function(user) {
+                return user.email != userMail;
+            })
+
+            return fullFilterUsers;
+
+        } else {
+            console.log("ObjectSearch go nqma")
+        }
+    }
+
+    UserStorage.prototype.sendFriendRequest = function(emailEnterA, emailEnterB) {
+        var objectA = this.users.find(function(user) { /// send  request
+            return user.email == emailEnterA;
+        })
+        var objectB = this.users.find(function(user) { // recive request
+            return user.email == emailEnterB;
+        })
+
+        if ((objectA != null) && (objectB != null)) {
+            // objectA.requestedList.push(objectB.email);
+            objectB.requestedList.push(objectA.email);
+        } else {
+            console.log("Error send request");
+        }
+    }
+
+    // emailB => email  na точния емйал от [abv/@abv.bg,asasa@abv.bg], 
+    // emailA => meil потребителя на когото преглеждаме листа с send request list -> objA.requestListArrey 
+    // objectA = самият потребител с опрделен лист []
+    // objectBindex = > index-a на този емайл които ще тре pop-нем
+    UserStorage.prototype.showRequestList = function(userEmail) {
+        var findUser = this.users.find(function(user) {
+            return user.email == userEmail;
+        })
+        if (findUser != null) {
+            var retList = [];
+            findUser.requestedList.forEach(function(userEmail) {
+                var obj = this.users.find(function(user) {
+                    return user.email == userEmail;
+                });
+                retList.push(obj);
+            }, this);
+
+            return retList;
+        } else {
+            console.log('nqma takyv ..')
+        }
+    }
+
+    // Когато единият от двамата удобри поканата на другия
+    UserStorage.prototype.addFriendInFriendsList = function(sender, receiver) {
+        var object1 = this.users.find(function(user) { /// send  request
+            return user.email == sender;
+        });
+        var object2 = this.users.find(function(user) { // recive request
+            return user.email == receiver;
+        });
+
+        if ((object1 != null) && (object2 != null)) {
+
+
+
+            // object1.friendsList.push(object2.email);
+            // object2.friendsList.push(object1.email);
+
+            var local = JSON.parse(localStorage.getItem("users"))
+
+            var test1 = local.find(function(user) { /// send  request
+                return user.email == sender;
+            });
+            var test2 = local.find(function(user) { // recive request
+                return user.email == receiver;
+            });
+
+            test1.friendsList.push(test2.email);
+            test2.friendsList.push(test1.email);
+
+            this.users = local;
+            localStorage.setItem("users", JSON.stringify(this.users));
+
+        } else {
+            console.log(" ... error users")
+        }
+    }
+    UserStorage.prototype.clearRequestList = function(emailEnterA, emailEnterB) {
+        var local = JSON.parse(localStorage.getItem("users"))
+        var objectA = local.find(function(user) { // намира потребитея с []
+            return user.email == emailEnterA;
+        });
+
+        var objectBIndex = objectA.requestedList.findIndex(function(email) {
+            return email == emailEnterB;
+        });
+
+        if ((objectA != null) && (objectBIndex >= 0)) {
+            if (objectA.requestedList.length > 0) {
+                objectA.requestedList.splice(objectBIndex, 1);
+                var test1 = local.find(function(user) { /// send  request
+                    return user.email == sender;
+                });
+                var test2 = local.find(function(user) { // recive request
+                    return user.email == receiver;
+                });
+
+                test1.friendsList.push(test2.email);
+                test2.friendsList.push(test1.email);
+
+
+                this.users = local;
+                localStorage.setItem("users", JSON.stringify(this.users));
+            } else {
+                console.log("No friends requests")
+            }
+        } else {
+            console.log("Error send request");
+        }
+    }
+
+    UserStorage.prototype.showFriendsList = function(userEmail) {
+        var findUser = this.users.find(function(user) {
+            return user.email == userEmail;
+        })
+        if (findUser != null) {
+            var retFrList = [];
+            findUser.friendsList.forEach(function(userEmail) {
+                var obj = this.users.find(function(user) {
+                    return user.email == userEmail;
+                });
+                retFrList.push(obj);
+            }, this);
+
+            return retFrList;
+        } else {
+            console.log('nqma takyv ..')
         }
     }
     return new UserStorage();

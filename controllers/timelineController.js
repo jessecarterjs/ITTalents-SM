@@ -2,6 +2,7 @@ function timelineController() {
 
     $('main').show(); // everytime when timelineController the main.display should be block
     $('.new-post').show();
+    $('#container-with-friends').hide()
     $('#about').hide();
     $('#login-container').hide();
     $('#reg-container').hide();
@@ -30,13 +31,20 @@ function timelineController() {
         if (!loggedUser.moreInfo) {
             loggedUser.moreInfo = {};
         }
+        var img = loggedUser.moreInfo.img
+        // Handlebars.registerHelper('isTrue', function(avatar) {
+        //     var img = loggedUser.moreInfo.img
+        //     
+        //     return avatar != undefined;
+        // });
+
         var source = $('#nameTemplate').html();
         var timeline = Handlebars.compile(source);
         var html = timeline({
             firstName: loggedUser.fName,
             lastName: loggedUser.sName
         });
-        var img = loggedUser.moreInfo.img
+        
 
         $('#name').html(html);
         $('#name2').html(html);
@@ -46,6 +54,7 @@ function timelineController() {
             $('.profile-avatar').css('background-image', 'url(' + img + ')');
         }
 
+usersTimeline.refreshPosts();
 
         var username = JSON.parse(sessionStorage.getItem('loggedUser'));
         var posts = usersTimeline.getPosts(username);
@@ -81,11 +90,13 @@ function timelineController() {
                 }
             }
         })
-
-        $('.user-reply-img').css('background-image', 'url( ' + img + ')')
+        usersTimeline.refreshPosts();
+        
         $('.user-post-img').each(function (img) {
             $(this).css('background-image', 'url("' + $(this).attr('id') + '")');
         });
+
+        $('.user-reply-img2').css('background-image', 'url( ' + img + ')')
 
         $('.reply-avatar').each(function () {
             $(this).css('background-image', 'url( ' + img + ')')

@@ -2,7 +2,6 @@ function searchController() {
     var users = JSON.parse(localStorage.getItem('users'));
 
     $('#search-input').on('keyup', function() {
-        // console.log('refresh', users);
 
         var source = $('#search').html();
         var searchTable = Handlebars.compile(source)

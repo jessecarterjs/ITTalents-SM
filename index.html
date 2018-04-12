@@ -11,20 +11,17 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src='node_modules/handlebars/dist/handlebars.min.js'></script>
-  <script src='testService.js'></script>
   <script src="logRegServices/loginServices.js"></script>
   <script src="logRegServices/postsServices.js"></script>
   <script src='logRegServices/photosService.js'></script>
-
   <script src='controllers/registerController.js'></script>
   <script src='controllers/loginController.js'></script>
-
+  <script src='controllers/friendsController.js'></script>
   <script src='controllers/searchController.js'></script>
   <script src='controllers/timelineController.js'></script>
   <script src='controllers/mainTimelineController.js'></script>
   <script src='controllers/aboutMeController.js'></script>
   <script src='controllers/photosController.js'></script>
-
   <script src='controllers/logoutController.js'></script>
   <script src='app.js'></script>
 </head>
@@ -120,11 +117,11 @@
 
 
 
-      <script id='post' type='text/x-handlebars-template'>
+<script id='post-mainTimeline' type='text/x-handlebars-template'>
       {{#each posts}}
       <div class="post" id="{{id}}">
         <div class="post-header">
-          <div class="user-post-img" id="{{avatar}}"></div> <!-- * <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
+         <div class="user-post-img" {{#if (isTrue avatar)}} style="background-image:url('{{avatar}}')" {{else}} id="{{avatar}}" {{/if}}></div> 
           <h1>{{username}}</h1> <!--* <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
           <span class="del">&#10005;</span>
         </div>
@@ -136,10 +133,9 @@
           {{/if}}
         </div>
         
+
         <div class="post-footer">
-      </div>
-        <div class="post-footer">
-          <div class="user-reply-img"></div>
+          <div class="user-reply-img2"></div>
           <input class="input-reply" type="text" placeholder="Add Comment">
 
           <div id='reply-btn' class="btn reply-btn">REPLY</div>
@@ -147,7 +143,42 @@
         <div class="post-replys-container">
         {{#replies}}
           <div class="post-reply">
-              <div class="user-reply-img reply-avatar" id = 'reply-avatar'></div>
+              <div class="user-reply-img reply-avatar" {{#if (isTrue avatar)}} style="background-image:url('{{avatar}}')"{{/if}}></div>
+              <h2>{{username}}</h2>
+              <div class="post-reply-text">{{text}}</div>
+          </div>
+        {{/replies}}
+      </div>
+      </div>
+      {{/each}}
+</script>
+
+<script id='post' type='text/x-handlebars-template'>
+       {{#each posts}}
+      <div class="post" id="{{id}}">
+        <div class="post-header">
+         <div class="user-post-img" id="{{avatar}}"></div> 
+          <h1>{{username}}</h1> <!--* <<<<<<<<<< THIS SHOULD CHANGE BASED ON USER WHO POSTED THE CURRENT POST => handlebars template ? >>>>>>>>>>> -->
+          <span class="del">&#10005;</span>
+        </div>
+        <div class="post-content">
+          <p>{{text}}</p>
+          {{#if img}}
+          <br>
+          <img src="{{img}}" alt="">
+          {{/if}}
+        </div>
+
+        <div class="post-footer">
+          <div class="user-reply-img2"></div>
+          <input class="input-reply" type="text" placeholder="Add Comment">
+
+          <div id='reply-btn' class="btn reply-btn">REPLY</div>
+        </div>
+        <div class="post-replys-container">
+        {{#replies}}
+          <div class="post-reply">
+              <div class="user-reply-img" style="background-image:url('{{avatar}}')"></div>
               <h2>{{username}}</h2>
               <div class="post-reply-text">{{text}}</div>
           </div>
@@ -204,13 +235,13 @@
 
 
 
-  <script id="friends" type='text/x-handlebars-template'>
+ <!--  <script id="friends" type='text/x-handlebars-template'> -->
       <!-- TODO: това е friends секцията >>>
       сложил съм 2 карти(friend-card представлява профилната снимка и името на приятелчето)
       Това също както предишните неща трябва да се изрисува с handlebars като за всяко приятелче
       правим по една нова карта и я слагаме в all-friends;
       -->
-      <div class="all-friends">
+ <!--      <div class="all-friends">
         <div class="friend-card">
           <img src="https://pbs.twimg.com/profile_images/616041875821187072/E_3j34ED.jpg" alt="">
           <h1>Mike Nice</h1>
@@ -222,6 +253,58 @@
         
       </div>
       </script>
+  </script> -->
+
+  <div id="container-with-friends">
+          <!-- <a id="friendRequests-btn" href="#friendsRequested">Friends requests</a> -->
+  
+          <h3 class="textTitleSections">Find My Friends</h3>
+          <div id="all-friends" class="heightClass">
+          </div>
+  
+          <h3 class="textTitleSections">Friends Requests</h3>
+          <div id="request-friends" class="heightClass">
+          </div>
+  
+          <h3 class="textTitleSections">All my Friends</h3>
+          <div id="myFriends" class="heightClass">
+          </div>
+  
+  </div>
+
+        <script id="all-friends-in-list-template" type="text/x-handlebars-template">
+          {{#each users}}
+          <div class="friend-card">
+              <img src="{{moreInfo.img}}" class="friend-card-avatar" alt="">
+              <h4>{{fName}} {{sName}}</h4>
+              <h4>{{email}}</h4>
+              <button class='addPerson'>ADD FRIEND</button>
+              <p class='textAdded' style="color:red;">Friend request has been send!! </p>
+          </div>
+          {{/each}}
+      </script>
+  
+      <script id="requested-list-template" type="text/x-handlebars-template">
+        {{#each users}}
+        <div class="friend-card">
+              <img src="{{moreInfo.img}}" class="friend-card-avatar" alt="">
+              <h4>{{fName}} {{sName}}</h4>
+              <h4>{{email}}</h4>
+            <button class='accept'>Accept</button>
+            <button class='ignore'>Ignore</button>
+        </div>
+        {{/each}}
+    </script>
+  
+    <script id="added-friends-list-template" type="text/x-handlebars-template">
+      {{#each users}}
+      <div class="friend-card">
+              <img src="{{moreInfo.img}}" class="friend-card-avatar" alt="">
+              <h4>{{fName}} {{sName}}</h4>
+              <h4>{{email}}</h4>
+          <button class='viewPrifile'>View Profile</button>
+      </div>
+      {{/each}}
   </script>
 
 
@@ -246,22 +329,13 @@
         {{firstName}} {{lastName}}
       </script>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat molestias cum, fugit veniam, inventore aliquam assumenda. Amet, placeat mollitia earum ipsa odio perspiciatis omnis sequi repellendus magni non, nemo, ab!</p>
-
-
-
-
 
   <script id='photo' type='text/x-handlebars-template'>
         {{#each photos}}
-        <div class="post" id="{{id}}">
-          <div class="post-header">
-                <div class="user-post-img" id="{{avatar}}"></div>
-                <h1>{{username}}</h1> 
-              <!-- <p>lorem</p> -->
-              <span class="del">&#10005;</span>
-          </div>
-          <div class="post-content">
+        <div class="post" style="max-width: 200px; margin: 10px;display: inline-block;" id="{{id}}">
+       
+          <div class="post-content" style="padding: 15px 0 5px 0;">
+              <span class="del" style="right: 0">&#10005;</span>
             <!-- {{#if url}} -->
             <a href={{url}} target="_blank"><img src="{{url}}" alt=""></a>
             <!-- {{/if}} -->
@@ -270,13 +344,11 @@
         {{/each}}
   </script>
   <script id="photos" type="text/x-handlebars-template">
-    <div class="new-post" id="uploadPhoto">
-        <div class="new-post-footer">
-          <img class="add-img" src="assets/img/add-image.png" alt="">
-          <input id="input-add-photo" type="text" placeholder="Enter Image URL">
-          <div id='add-btn'class="btn" >ADD</div>
+        <div class="photo-add-div">
+          <input id="input-add-photo" style="display:block" type="text" placeholder="Enter Image URL">
+          <div id='add-btn' class="btn" >ADD</div>
         </div>
-    </div>
+              
     <div id ='allPhotos'></div>
   </script>
 
